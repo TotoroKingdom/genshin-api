@@ -1,6 +1,9 @@
-spring:
-  rabbitmq:
-    addresses: 192.168.121.121
-    username: admin
-    password: admin
-    virtual-host: test
+server:
+  port: 8888
+
+#spring:
+#  rabbitmq:
+#    addresses: 192.168.121.121
+#    username: admin
+#    password: admin
+#    virtual-host: test

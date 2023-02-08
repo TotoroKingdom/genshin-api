@@ -27,7 +27,7 @@ public class SpringBootMqApplicationTests {
     @Test
     void sendUser(){
         User user = new User();
-        user.setName("鹌鹑蛋");
+        user.setNickname("鹌鹑蛋");
         rabbitTemplate.convertAndSend("amq.direct","my-yyds",user);
     }
 }
