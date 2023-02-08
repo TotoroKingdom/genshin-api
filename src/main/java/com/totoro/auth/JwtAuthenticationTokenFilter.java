@@ -1,6 +1,7 @@
 package com.totoro.auth;
 
 import cn.hutool.core.collection.CollUtil;
+import cn.hutool.core.util.ObjectUtil;
 import cn.hutool.core.util.StrUtil;
 import com.totoro.pojo.auth.LoginUser;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -8,6 +9,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
 import org.springframework.stereotype.Component;
+import org.springframework.util.ObjectUtils;
 import org.springframework.util.StringUtils;
 import org.springframework.web.filter.OncePerRequestFilter;
 
@@ -34,8 +36,11 @@ public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
             return;
         }
         HttpSession session = request.getSession();
-        LoginUser user = (LoginUser) session.getAttribute(token);
-        UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(user,null,null);
+        LoginUser loginUser = (LoginUser) session.getAttribute(token);
+        if (ObjectUtil.isNull(loginUser)){
+            throw new RuntimeException("用户未登录");
+        }
+        UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(loginUser,null,loginUser.getAuthorities());
         SecurityContextHolder.getContext().setAuthentication(authenticationToken);
         filterChain.doFilter(request,response);
 

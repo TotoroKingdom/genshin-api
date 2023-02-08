@@ -8,6 +8,9 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.HashSet;
+import java.util.Set;
+
 /**
  * @author:totoro
  * @createDate:2023/2/8
@@ -21,12 +24,15 @@ public class UserDetailServiceImpl implements UserDetailsService {
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
         String admin = encoder.encode("admin");
 
+        Set<String> permissions = new HashSet<>();
+        permissions.add("auth");
+
         User user = new User();
         user.setId(1L);
         user.setUsername("admin");
         user.setPassword(admin);
 
-        UserDetails loginUser = new LoginUser(user);
+        UserDetails loginUser = new LoginUser(user,permissions,null);
         return loginUser;
     }
 }
