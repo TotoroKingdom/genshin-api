@@ -1,7 +1,9 @@
 package com.totoro.controller;
 
+import com.totoro.annonation.ApiResult;
 import com.totoro.auth.AuthUtil;
 import com.totoro.auth.LoginService;
+import com.totoro.constants.Result;
 import com.totoro.pojo.auth.LoginBody;
 import com.totoro.pojo.auth.LoginUser;
 import lombok.extern.slf4j.Slf4j;
@@ -28,18 +30,9 @@ public class LoginController {
     private LoginService loginService;
 
     @PostMapping("login")
-    public String login(@RequestBody LoginBody body){
+    public Result login(@RequestBody LoginBody body){
         String jwtToken = loginService.login(body);
-        return jwtToken;
-    }
-
-    @GetMapping("loginout")
-    public String logout(HttpServletRequest request){
-        LoginUser loginUser = AuthUtil.getLoginUser();
-        System.out.println(loginUser);
-        HttpSession session = request.getSession();
-        session.removeAttribute("token"+loginUser.getUser().getId());
-        return "logout success";
+        return Result.success(jwtToken);
     }
 
 

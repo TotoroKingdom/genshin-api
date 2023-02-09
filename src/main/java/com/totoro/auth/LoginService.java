@@ -1,15 +1,18 @@
 package com.totoro.auth;
 
+import com.totoro.exception.ServiceException;
 import com.totoro.pojo.auth.LoginBody;
 import com.totoro.pojo.auth.LoginUser;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ObjectUtils;
 
 import javax.annotation.Resource;
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.HashMap;
@@ -31,12 +34,19 @@ public class LoginService{
     @Resource
     private TokenService tokenService;
 
-    public String login(LoginBody body) {
+    public String login(LoginBody body){
 
-        UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(body.getUsername(), body.getPassword());
-        Authentication authenticate = authenticationManager.authenticate(token);
-        if (ObjectUtils.isEmpty(authenticate)){
-            throw new RuntimeException("账号或密码错误");
+
+        Authentication authenticate = null;
+        try{
+            UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(body.getUsername(), body.getPassword());
+            authenticate =  authenticationManager.authenticate(token);
+        } catch (Exception e){
+            if (e instanceof BadCredentialsException){
+                throw new ServiceException("账号或密码错误");
+            }else {
+                throw new ServiceException(e.getMessage());
+            }
         }
 
         LoginUser loginUser = (LoginUser) authenticate.getPrincipal();

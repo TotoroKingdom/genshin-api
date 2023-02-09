@@ -30,6 +30,8 @@ public class LoginUser implements UserDetails {
 
     private String token;
 
+    private Long expireTime;
+
     public LoginUser(){}
     public LoginUser(User user, Set<String> permissions){
         this.user = user;

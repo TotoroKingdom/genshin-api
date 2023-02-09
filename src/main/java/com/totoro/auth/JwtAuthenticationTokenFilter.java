@@ -3,7 +3,9 @@ package com.totoro.auth;
 import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.util.ObjectUtil;
 import cn.hutool.core.util.StrUtil;
+import com.totoro.exception.ServiceException;
 import com.totoro.pojo.auth.LoginUser;
+import org.apache.catalina.security.SecurityUtil;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -13,6 +15,7 @@ import org.springframework.util.ObjectUtils;
 import org.springframework.util.StringUtils;
 import org.springframework.web.filter.OncePerRequestFilter;
 
+import javax.annotation.Resource;
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -27,22 +30,20 @@ import java.io.IOException;
  */
 @Component
 public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
+
+    @Resource
+    private TokenService tokenService;
+
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
-
-        String token = request.getHeader("token");
-        if (StrUtil.isEmpty(token)){
-            filterChain.doFilter(request,response);
-            return;
+        LoginUser loginUser = tokenService.getLoginUser(request);
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (ObjectUtil.isNotNull(loginUser) && ObjectUtil.isNull(authentication)){
+            tokenService.verifyToken(loginUser);
+            UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(loginUser,null,loginUser.getAuthorities());
+            authenticationToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
+            SecurityContextHolder.getContext().setAuthentication(authenticationToken);
         }
-        HttpSession session = request.getSession();
-        LoginUser loginUser = (LoginUser) session.getAttribute(token);
-        if (ObjectUtil.isNull(loginUser)){
-            throw new RuntimeException("用户未登录");
-        }
-        UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(loginUser,null,loginUser.getAuthorities());
-        SecurityContextHolder.getContext().setAuthentication(authenticationToken);
         filterChain.doFilter(request,response);
-
     }
 }
