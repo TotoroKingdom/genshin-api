@@ -3,15 +3,6 @@ server:
   servlet:
     context-path: /api
 
-# token配置
-jwt:
-  # 令牌自定义标识
-  header: Authorization
-  # 令牌密钥
-  secret: genshinimpartsecret
-  # 令牌有效期（默认30分钟）
-  expireTime: 3000
-
 spring:
   rabbitmq:
     addresses: 192.168.121.121
@@ -24,3 +15,21 @@ spring:
     database: 0
     password: redis2022
     timeout: 10s
+
+##日志
+logging:
+  level:
+    com.hime: info
+    org.springframework: error
+  config: classpath:logback-spring.xml
+logback:
+  path: /opt/genshin-api/logs
+
+# token配置
+jwt:
+  # 令牌自定义标识
+  header: Authorization
+  # 令牌密钥
+  secret: genshinimpartsecret
+  # 令牌有效期（默认30分钟）
+  expireTime: 3000
