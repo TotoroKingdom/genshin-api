@@ -22,3 +22,12 @@ spring:
     database: 11
     password: 123456
     timeout: 10s
+
+##日志
+#logging:
+#  level:
+#    com.hime: info
+#    org.springframework: error
+#  config: classpath:logback-spring.xml
+#logback:
+#  path: /opt/genshin-api/logs
