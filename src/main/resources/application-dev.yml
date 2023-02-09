@@ -1,9 +1,24 @@
 server:
   port: 8888
 
-#spring:
-#  rabbitmq:
-#    addresses: 192.168.121.121
-#    username: admin
-#    password: admin
-#    virtual-host: test
+# token配置
+jwt:
+  # 令牌自定义标识
+  header: Authorization
+  # 令牌密钥
+  secret: genshinimpartsecret
+  # 令牌有效期（默认30分钟）
+  expireTime: 3000
+
+spring:
+  rabbitmq:
+    addresses: 192.168.121.121
+    username: admin
+    password: admin
+    virtual-host: test
+  redis:
+    host: 192.168.3.99
+    port: 6379
+    database: 11
+    password: 123456
+    timeout: 10s

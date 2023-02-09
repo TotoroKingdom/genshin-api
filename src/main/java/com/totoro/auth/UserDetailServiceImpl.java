@@ -32,7 +32,7 @@ public class UserDetailServiceImpl implements UserDetailsService {
         user.setUsername("admin");
         user.setPassword(admin);
 
-        UserDetails loginUser = new LoginUser(user,permissions,null);
+        UserDetails loginUser = new LoginUser(user,permissions);
         return loginUser;
     }
 }

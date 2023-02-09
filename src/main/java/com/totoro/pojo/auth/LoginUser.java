@@ -20,8 +20,6 @@ import java.util.stream.Collectors;
  * @description:
  */
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
 public class LoginUser implements UserDetails {
 
     private User user;
@@ -29,6 +27,14 @@ public class LoginUser implements UserDetails {
     private Set<String> permissions;
 
     private List<GrantedAuthority> authorities;
+
+    private String token;
+
+    public LoginUser(){}
+    public LoginUser(User user, Set<String> permissions){
+        this.user = user;
+        this.permissions = permissions;
+    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
