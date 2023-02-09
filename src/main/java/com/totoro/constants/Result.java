@@ -29,4 +29,20 @@ public class Result<T> implements Serializable {
         result.setData(data);;
         return result;
     }
+
+    public static <T> Result<T> error(Integer code, String msg){
+        Result result = new Result();
+        result.setCode(code);
+        result.setMsg(msg);
+        result.setData(null);;
+        return result;
+    }
+
+    public static <T> Result<T> error(String msg){
+        Result result = new Result();
+        result.setCode(HttpStatus.HTTP_INTERNAL_ERROR);
+        result.setMsg(msg);
+        result.setData(null);;
+        return result;
+    }
 }
