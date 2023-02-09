@@ -28,9 +28,9 @@ public class LoginController {
     private LoginService loginService;
 
     @PostMapping("login")
-    public Map login(@RequestBody LoginBody body){
-        Map login = loginService.login(body);
-        return login;
+    public String login(@RequestBody LoginBody body){
+        String jwtToken = loginService.login(body);
+        return jwtToken;
     }
 
     @GetMapping("loginout")

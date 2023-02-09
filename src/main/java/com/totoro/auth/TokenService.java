@@ -6,10 +6,13 @@ import com.totoro.pojo.auth.LoginUser;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author:totoro
@@ -30,6 +33,9 @@ public class TokenService {
     // 令牌有效期（默认300分钟）
     @Value("${jwt.expireTime}")
     private int expireTime;
+
+    @Resource
+    private RedisTemplate redisTemplate;
 
     /**
      * 新建token
@@ -55,8 +61,14 @@ public class TokenService {
      * @param loginUser
      * @return
      */
-    public String refreshToken(LoginUser loginUser){
+    public void refreshToken(LoginUser loginUser){
+        String tokenKey = getTokenKey(loginUser.getToken());
 
-        return null;
+        //缓存用户信息
+        redisTemplate.opsForValue().set(tokenKey, loginUser, expireTime, TimeUnit.MINUTES);
+    }
+
+    private String getTokenKey(String token){
+        return Constants.LOGIN_USER_KEY + token;
     }
 }

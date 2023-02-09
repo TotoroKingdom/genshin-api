@@ -28,8 +28,10 @@ public class LoginService{
     private AuthenticationManager authenticationManager;
     @Resource
     private HttpServletRequest request;
+    @Resource
+    private TokenService tokenService;
 
-    public Map login(LoginBody body) {
+    public String login(LoginBody body) {
 
         UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(body.getUsername(), body.getPassword());
         Authentication authenticate = authenticationManager.authenticate(token);
@@ -37,14 +39,10 @@ public class LoginService{
             throw new RuntimeException("账号或密码错误");
         }
 
-        LoginUser principal = (LoginUser) authenticate.getPrincipal();
+        LoginUser loginUser = (LoginUser) authenticate.getPrincipal();
 
-        HttpSession session = request.getSession();
-        session.setAttribute("token"+principal.getUser().getId(),principal);
+        String jwtToken = tokenService.createToken(loginUser);
 
-        HashMap<Object, Object> map = new HashMap<>();
-        map.put("token","token"+principal.getUser().getId());
-
-        return map;
+        return jwtToken;
     }
 }
