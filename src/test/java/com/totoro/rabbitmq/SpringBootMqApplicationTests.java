@@ -30,4 +30,11 @@ public class SpringBootMqApplicationTests {
         user.setNickname("鹌鹑蛋");
         rabbitTemplate.convertAndSend("amq.direct","my-yyds",user);
     }
+
+    @Test
+    void publisherDl(){
+        for (int i = 0; i < 4; i++) {
+            rabbitTemplate.convertAndSend("amq.direct","my-yyds",new User());
+        }
+    }
 }
