@@ -1,6 +1,5 @@
 package com.totoro.auth;
 
-import cn.hutool.extra.servlet.ServletUtil;
 import cn.hutool.http.HttpStatus;
 import cn.hutool.json.JSONObject;
 import com.totoro.constants.Result;

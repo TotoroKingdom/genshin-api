@@ -1,6 +1,5 @@
 package com.totoro.config;
 
-import com.totoro.pojo.User;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.stereotype.Component;
 

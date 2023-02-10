@@ -39,9 +39,9 @@ public class TokenService {
     @Value("${jwt.expireTime}")
     private int expireTime;
 
-    protected static final long MILLIS_SECOND = 1000;
+    protected static final Long MILLIS_SECOND = 1000;
 
-    protected static final long MILLIS_MINUTE = 60 * MILLIS_SECOND;
+    protected static final Long MILLIS_MINUTE = 60 * MILLIS_SECOND;
 
     private static final Long MILLIS_MINUTE_TEN = 20 * 60 * 1000L;
 
@@ -89,7 +89,7 @@ public class TokenService {
 
     public void verifyToken(LoginUser loginUser){
         Long expireTime = loginUser.getExpireTime();
-        long currentTime = System.currentTimeMillis();
+        Long currentTime = System.currentTimeMillis();
         String userKey = getTokenKey(loginUser.getToken());
         if (expireTime - currentTime <= MILLIS_MINUTE_TEN){
             refreshToken(loginUser);
@@ -102,7 +102,7 @@ public class TokenService {
     public void refreshToken(LoginUser loginUser){
         String tokenKey = getTokenKey(loginUser.getToken());
 
-        long currentTime = System.currentTimeMillis();
+        Long currentTime = System.currentTimeMillis();
         loginUser.setExpireTime(currentTime + expireTime * MILLIS_MINUTE);
         //缓存用户信息
         redisTemplate.opsForValue().set(tokenKey, loginUser, expireTime, TimeUnit.MINUTES);

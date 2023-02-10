@@ -1,6 +1,5 @@
 package com.totoro.rabbitmq;
 
-import com.totoro.pojo.User;
 import org.junit.jupiter.api.Test;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.boot.test.context.SpringBootTest;

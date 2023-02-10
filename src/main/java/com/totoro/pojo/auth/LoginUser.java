@@ -2,9 +2,7 @@ package com.totoro.pojo.auth;
 
 import cn.hutool.core.util.ObjectUtil;
 import com.totoro.pojo.User;
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;

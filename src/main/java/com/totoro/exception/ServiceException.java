@@ -1,14 +1,12 @@
 package com.totoro.exception;
 
-import lombok.Data;
-
 /**
  * @author:totoro
  * @createDate:2023/2/9
  * @description:
  */
 public final class ServiceException extends RuntimeException{
-    private static final long serialVersionUID = 1L;
+    private static final Long serialVersionUID = 1L;
 
     private Integer code;
 
