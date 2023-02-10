@@ -13,6 +13,11 @@ jwt:
   expireTime: 3000
 
 spring:
+  mail:
+    host: smtp.qq.com
+    port: 587
+    username: totorokingdom@foxmail.com
+    password: myajkfkbqxdxbcjg
   rabbitmq:
     addresses: 192.168.121.121
     username: admin
@@ -34,4 +39,6 @@ logging:
 logback:
   path: /opt/genshin-api/logs
 
-
+register:
+  callback:
+    url: localhost
