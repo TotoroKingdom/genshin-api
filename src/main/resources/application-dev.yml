@@ -11,6 +11,11 @@ jwt:
   expireTime: 3000
 
 spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/world?useUnicode=true&characterEncoding=utf-8&useSSL=false&allowMultiQueries=true&serverTimezone=UTC&allowMultiQueries=true&useAffectedRows=true
+    username: root
+    password: root
   mail:
     host: smtp.qq.com
     port: 587
@@ -40,3 +45,10 @@ logback:
 register:
   callback:
     url: localhost
+
+mybatis-plus:
+  mapper-locations: classpath:com.totoro.mapper.*.xml
+  type-aliases-package: com.totoro.pojo
+  configuration:
+    map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.slf4j.Slf4jImpl

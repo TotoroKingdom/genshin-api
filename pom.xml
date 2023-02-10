@@ -18,9 +18,24 @@
         <skipTests>true</skipTests>
         <hutool.version>5.5.9</hutool.version>
         <jjwt.version>0.9.1</jjwt.version>
-
+        <mybatisPlus.version>3.5.2</mybatisPlus.version>
+        <mysql.version>8.0.11</mysql.version>
     </properties>
     <dependencies>
+
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>${mysql.version}</version>
+        </dependency>
+
+
+        <!-- https://mvnrepository.com/artifact/com.baomidou/mybatis-plus-boot-starter -->
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-boot-starter</artifactId>
+            <version>${mybatisPlus.version}</version>
+        </dependency>
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
