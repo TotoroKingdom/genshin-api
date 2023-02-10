@@ -58,6 +58,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/login").anonymous()
                 .antMatchers("/test/**").anonymous()
+                .antMatchers("/register/**").anonymous()
                 .anyRequest().authenticated()
                 .and()
                 .headers().frameOptions().disable();
