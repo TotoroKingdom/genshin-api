@@ -1,11 +1,10 @@
 package com.totoro.email;
 
+import com.totoro.constants.EmailConstants;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import javax.annotation.Resource;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * @author:totoro
@@ -24,6 +23,16 @@ class EmailTest {
         String subject = "测试邮件";
         String text = "hello world!";
         email.send(receiver,subject,text);
+    }
+
+    @Test
+    void build(){
+        String receiver = "634581304@qq.com";
+        String subject = "测试邮件";
+        String text = "hello world!";
+        String url = EmailConstants.EMAIL_REGISTER_TEMPLATE;
+        email.send(receiver,subject,text,url);
+
     }
 
 }

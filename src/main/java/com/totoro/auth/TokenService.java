@@ -10,7 +10,6 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -39,11 +38,11 @@ public class TokenService {
     @Value("${jwt.expireTime}")
     private int expireTime;
 
-    protected static final Long MILLIS_SECOND = 1000;
+    protected static final long MILLIS_SECOND = 1000;
 
-    protected static final Long MILLIS_MINUTE = 60 * MILLIS_SECOND;
+    protected static final long MILLIS_MINUTE = 60 * MILLIS_SECOND;
 
-    private static final Long MILLIS_MINUTE_TEN = 20 * 60 * 1000L;
+    private static final long MILLIS_MINUTE_TEN = 20 * 60 * 1000L;
 
     @Resource
     private RedisTemplate redisTemplate;

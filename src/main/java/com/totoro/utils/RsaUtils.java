@@ -1,7 +1,7 @@
 package com.totoro.utils;
 
-import org.apache.tomcat.util.codec.binary.Base64;
 
+import org.apache.commons.codec.binary.Base64;
 import javax.crypto.Cipher;
 import java.security.*;
 import java.security.interfaces.RSAPrivateKey;
@@ -17,24 +17,23 @@ import java.security.spec.X509EncodedKeySpec;
 public class RsaUtils {
 
     // Rsa 私钥
-    public static String privateKey = "MIICeAIBADANBgkqhkiG9w0BAQEFAASCAmIwggJeAgEAAoGBAJ1c7khTPs0PN2hj333TWhdX" +
-            "72/4zMk8JGpTEBDn5P5sK+MxG1smEZnKqPFPYIA4D/SUfWHqvZYPROnBKlyV5C0Q3LBy19hUk+dwkJLtqUpFdKsNHQBMNXpNpH" +
-            "NTH7ejKSPUSg6nIelkyEp+Y6Vkje66m+3esak3SKAsXPUBkW7vAgMBAAECgYEAjriNSL1vdO37E8uZFHaO/CL9/3EI0u6gHGqv" +
-            "ZJXdg7854rlUFUwmpHRA23Nhk4jFN89BFIChaCr7FoLiV8x+f8roIL3seSWxqptzz0MNMdgdjNhe5MC92IfEMZIINYAgkrYO26" +
-            "+ULsBUHXmCdoRic6TjN42z14mUJF6yBJ1NCfkCQQDw3pW4UWym/Lx8Yk2S/m233v+f7vwNaTuwbpbisrSXJN4kzSmKZaf5oz+P" +
-            "eODtxBhyzg6duiG7bTmcqwzNHN8FAkEApz97HQLIeYDSdW0ByZy1mqZzGuJJhQdJhnZcPgKA3TD8zhuUsg/N6+jlrgzxX4ONUL" +
-            "G92GAkyMRy/ehkjJFwYwJBAMkXazO4dtdqxQmrIEyKMZuChzNE2BVyN6zyhvG4dGCDHRroVbf/ap9VlSj4qACY6Dhgo382+BZ7" +
-            "988+Vq+fXOkCQGFSV1myXOYXSGB8ZiXjwumTIjfqpc17SBWumk6bNlGASBvHgOd8ut8kT0LQ1UQ3UOw8AbT/fWg2qJOHv7rshv" +
-            "ECQQCxEkf+5GmIy5/ka33lRc+3zwDqKpsAbQyOImbMEjASbICxwGqcRmGLeRhM3nNpYT8UXRJ9tv5D3lpJVo5XqeDM";
+    public static String privateKey = "MIICdgIBADANBgkqhkiG9w0BAQEFAASCAmAwggJcAgEAAoGBAIk1ayCDFaX4QzdP1v68zacjZBNeWUZFn" +
+            "c6XOlJnCne0WM3n6jVc/eiO7Z7+7hKzeDFsS7N+MOlALfkMgXB3uxzKz5EoYosW24fQNtOz0A7tQZ3WdmG+XdusxbEIPBMP1YYcI4jy4WR6" +
+            "rWWLGf1FLsOf+zZa+oTnOGbnISrtxgI/AgMBAAECgYB807t1ZayBRT6piJpZQJ18bGc0c8aWduldtRmbNCFCzDFqio36JHLfa4DlAJrJKru" +
+            "zgwnP74NCAWCRzn3IOzVfW2Y9VRy8/Kwn+YfpV2he5COqZJixxQPePvYaIAwbZWwKZYblilbAQsVPrgu4rrYxC73ecKd+LiGgfn99Cr5maQ" +
+            "JBAOutCYZ4OUIlzLip10/Rm7Rf61AUKEZLuFQ6aVg3pP65GqaXpFdMH1i209oNjvQrorVwk1t5tpdSHmUgDxf5h2sCQQCVCorYzyumaTCFL" +
+            "kx3ON0k7CDuO9RCrlF7WMuDxBirEzBvsExsO0S0kk5ng4z5u0aFLFoOLMEUqTQVGbNOLGl9AkA4buXiAjXLxhtgeKLrJQkAxxskwL7oHkeU" +
+            "O6xwCFsE97QPAi7DDKJQ7u6Jv0dk5nH+umc+t0VmtK48jtGubvzjAkBxm4ujIKhBPUWC/3vCFVJc5rFjZ6+w9Hef8luPoVa8cPAm8tgOWE9" +
+            "S5YNmXFyFsD9dHCW5UFwNh7zvqJuJJ0lxAkEAkq3TzeTu0CvmeM5OGuSoPTXgfEVJXD+GoW2lsb4VFYVISuQXfoC5dH2+png0Q7+0Vzvy8Y" +
+            "FRNPOrGwwU4mjV4A==";
 
-    public static String publicKey = "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCdXO5IUz7NDzdoY99901oXV+9v+MzJPCRqUx" +
-            "AQ5+T+bCvjMRtbJhGZyqjxT2CAOA/0lH1h6r2WD0TpwSpcleQtENywctfYVJPncJCS7alKRXSrDR0ATDV6TaRzUx+3oykj1EoOp" +
-            "yHpZMhKfmOlZI3uupvt3rGpN0igLFz1AZFu7wIDAQAB";
+    public static String publicKey = "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCJNWsggxWl+EM3T9b+vM2nI2QTXllGRZ3OlzpSZwp3tF" +
+            "jN5+o1XP3oju2e/u4Ss3gxbEuzfjDpQC35DIFwd7scys+RKGKLFtuH0DbTs9AO7UGd1nZhvl3brMWxCDwTD9WGHCOI8uFkeq1lixn9RS7Dn" +
+            "/s2WvqE5zhm5yEq7cYCPwIDAQAB";
 
     /**
      * 私钥解密
      *
-     * @param privateKeyString 私钥
      * @param text 待解密的文本
      * @return 解密后的文本
      */

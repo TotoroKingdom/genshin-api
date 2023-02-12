@@ -53,7 +53,7 @@ public class EmailImpl implements Email {
     @Override
     public void send(String receiver, String subject, String text, String htmlUrl) {
 
-        text = buildContent(text, htmlUrl);
+        text = buildContent(htmlUrl, text);
 
         try{
             MimeMessage message = javaMailSender.createMimeMessage();

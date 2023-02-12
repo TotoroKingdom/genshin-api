@@ -1,6 +1,7 @@
 package com.totoro.service;
 
 import com.totoro.mapper.UserMapper;
+import com.totoro.pojo.User;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 

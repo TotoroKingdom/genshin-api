@@ -10,4 +10,6 @@ class GenshinApiApplicationTests {
     void contextLoads() {
     }
 
+
+
 }

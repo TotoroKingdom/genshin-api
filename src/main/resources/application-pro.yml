@@ -46,7 +46,7 @@ logback:
 
 register:
   callback:
-    url: localhost
+    url: 43.139.149.157:8080/api/register/active?code=
 
 mybatis-plus:
   mapper-locations: classpath:com.totoro.mapper.*.xml

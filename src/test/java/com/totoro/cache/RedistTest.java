@@ -1,5 +1,6 @@
 package com.totoro.cache;
 
+import com.totoro.pojo.User;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.redis.core.RedisTemplate;
