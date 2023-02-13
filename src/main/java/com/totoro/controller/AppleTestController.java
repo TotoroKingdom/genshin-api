@@ -1,13 +1,20 @@
 package com.totoro.controller;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.totoro.annonation.ApiResult;
 import com.totoro.constants.Result;
+import com.totoro.pojo.Apple;
 import com.totoro.pojo.User;
+import com.totoro.pojo.vo.UserVo;
+import com.totoro.service.AppleService;
+import com.totoro.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * @author:totoro
@@ -17,7 +24,26 @@ import org.springframework.web.bind.annotation.RestController;
 @Slf4j
 @RestController
 @RequestMapping("test")
-public class AuthTestController {
+public class AppleTestController {
+
+    @Resource
+    private AppleService appleService;
+    @Resource
+    private UserService userService;
+
+    @RequestMapping("page")
+    public Result page(){
+        Page<Apple> list = appleService.page();
+        return Result.success(list);
+    }
+
+    @RequestMapping("union")
+    public Result union(@RequestBody User user){
+
+        IPage<UserVo> userVoList = userService.findUserVoList(user);
+
+        return Result.success(userVoList);
+    }
 
     @GetMapping("hello")
     public Result<User> hello(){

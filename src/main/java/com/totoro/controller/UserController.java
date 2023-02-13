@@ -1,10 +1,14 @@
 package com.totoro.controller;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.totoro.constants.Result;
 import com.totoro.pojo.User;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import com.totoro.pojo.vo.UserVo;
+import com.totoro.service.UserService;
+import org.springframework.web.bind.annotation.*;
+
+import javax.annotation.Resource;
 
 /**
  * @author:totoro
@@ -15,12 +19,22 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("user")
 public class UserController {
 
-    @PostMapping("info")
-    public User info(@RequestParam("id") Long id){
-        User user = new User();
-        user.setId(id);
-        user.setNickname("甘雨");
-        user.setUsername("ganyu");
-        return user;
+    @Resource
+    private UserService userService;
+
+    @RequestMapping("page")
+    public Result page(@RequestBody User user){
+
+        IPage<UserVo> userVoList = userService.findUserVoList(user);
+
+        return Result.success(userVoList);
+    }
+
+    @RequestMapping("add")
+    public Result add(@RequestBody User user){
+
+        userService.add(user);
+
+        return Result.success(null);
     }
 }

@@ -1,0 +1,56 @@
+server:
+  port: 8888
+  servlet:
+    context-path: /api
+
+# token配置
+jwt:
+  # 令牌自定义标识
+  header: Authorization
+  # 令牌密钥
+  secret: genshinimpartsecret
+  # 令牌有效期（默认30分钟）
+  expireTime: 3000
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/world?useUnicode=true&characterEncoding=utf-8&useSSL=false&allowMultiQueries=true&serverTimezone=UTC&allowMultiQueries=true&useAffectedRows=true
+    username: root
+    password: root
+  mail:
+    host: smtp.qq.com
+    port: 587
+    username: totorokingdom@foxmail.com
+    password: myajkfkbqxdxbcjg
+  rabbitmq:
+    addresses: 192.168.121.121
+    username: admin
+    password: admin
+    virtual-host: test
+  redis:
+    host: 192.168.3.99
+    port: 6379
+    database: 11
+    password: 123456
+    timeout: 10s
+
+#日志
+logging:
+  level:
+    com.hime: info
+    org.springframework: error
+  config: classpath:logback-spring.xml
+logback:
+  path: /opt/genshin-api/logs
+
+register:
+  callback:
+    url: localhost:8888/api/register/active?code=
+
+mybatis-plus:
+  mapper-locations: classpath:com.totoro.mapper.*.xml
+  type-aliases-package: com.totoro.pojo
+  configuration:
+    map-underscore-to-camel-case: false
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl

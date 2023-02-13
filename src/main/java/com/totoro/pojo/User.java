@@ -7,11 +7,12 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
+import java.io.Serializable;
 import java.util.Date;
 
 @Data
 @TableName("t_user")
-public class User {
+public class User implements Serializable {
 
   @TableId(type = IdType.AUTO)
   private Long id;
