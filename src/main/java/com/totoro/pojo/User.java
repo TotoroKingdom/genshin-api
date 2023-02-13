@@ -4,7 +4,7 @@ package com.totoro.pojo;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -16,10 +16,15 @@ public class User implements Serializable {
 
   @TableId(type = IdType.AUTO)
   private Long id;
+
   private String nickname;
+
+
   private String username;
-  @JsonIgnore
+
+  @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
   private String password;
+
   private String email;
 
   //状态 00未激活 01激活 02停用

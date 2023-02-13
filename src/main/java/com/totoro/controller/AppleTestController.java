@@ -11,10 +11,13 @@ import com.totoro.service.AppleService;
 import com.totoro.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
-import java.util.List;
 
 /**
  * @author:totoro
@@ -45,14 +48,10 @@ public class AppleTestController {
         return Result.success(userVoList);
     }
 
-    @GetMapping("hello")
-    public Result<User> hello(){
-        User user = new User();
-        user.setId(1l);
-        user.setNickname("钟离");
-        user.setUsername("zhongli");
-        user.setPassword("zhonglipwd");
-        return Result.success(user);
+    @RequestMapping("add")
+    public Result add(@RequestBody @Validated User user){
+        userService.add(user);
+        return Result.success("新增成功");
     }
 
     @ApiResult
