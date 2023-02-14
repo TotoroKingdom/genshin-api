@@ -54,3 +54,8 @@ mybatis-plus:
   configuration:
     map-underscore-to-camel-case: false
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+springdoc:
+  packages-to-scan: com.totoro.controller
+  swagger-ui:
+    enabled: true

@@ -30,7 +30,7 @@ public class Pray implements Serializable {
   private Integer interwinedFate;
 
   //无主星辉
-  private Integer masteIntegerrlessStarglitter;
+  private Integer masterlessStarglitter;
 
   //无主星尘
   private Integer masterlessStardust;

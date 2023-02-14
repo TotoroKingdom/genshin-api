@@ -1,8 +1,10 @@
 package com.totoro.controller;
 
+import cn.hutool.core.lang.Assert;
 import com.totoro.auth.LoginService;
 import com.totoro.constants.Result;
 import com.totoro.pojo.auth.LoginBody;
+import com.totoro.utils.RsaUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -23,7 +25,10 @@ public class LoginController {
     private LoginService loginService;
 
     @PostMapping("login")
-    public Result login(@RequestBody LoginBody body){
+    public Result login(@RequestBody LoginBody body) throws Exception {
+        Assert.notEmpty(body.getPassword(),"密码不能为空");
+        String pwd = RsaUtils.decryptByPrivateKey(body.getPassword());
+        body.setPassword(pwd);
         String jwtToken = loginService.login(body);
         return Result.success(jwtToken);
     }

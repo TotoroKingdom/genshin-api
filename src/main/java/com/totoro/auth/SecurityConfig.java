@@ -1,7 +1,6 @@
 package com.totoro.auth;
 
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
@@ -59,6 +58,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/login").anonymous()
                 .antMatchers("/test/**").anonymous()
                 .antMatchers("/register/**").anonymous()
+                .antMatchers("/swagger-ui/index.html").anonymous()
+                .antMatchers("/v3/api-docs/").anonymous()
                 .anyRequest().authenticated()
                 .and()
                 .headers().frameOptions().disable();

@@ -9,14 +9,9 @@ import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
-import org.springframework.util.ObjectUtils;
 
 import javax.annotation.Resource;
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * @author:totoro
@@ -52,6 +47,7 @@ public class LoginService{
         LoginUser loginUser = (LoginUser) authenticate.getPrincipal();
 
         String jwtToken = tokenService.createToken(loginUser);
+
 
         return jwtToken;
     }

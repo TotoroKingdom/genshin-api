@@ -29,10 +29,10 @@ spring:
     password: admin
     virtual-host: test
   redis:
-    host: 192.168.3.99
+    host: 192.168.121.121
     port: 6379
     database: 11
-    password: 123456
+    password: 'redis2022'
     timeout: 10s
 
 #日志
@@ -53,4 +53,9 @@ mybatis-plus:
   type-aliases-package: com.totoro.pojo
   configuration:
     map-underscore-to-camel-case: true
-    log-impl: org.apache.ibatis.logging.slf4j.Slf4jImpl
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+# 接口文档
+springdoc:
+  packages-to-scan: com.totoro.controller
+  swagger-ui:
+    enabled: true

@@ -7,6 +7,24 @@ package com.totoro.constants;
  **/
 public class PrayConstants {
 
+    //四星角色中奖概率开始上升
+    public static final Integer four_star_character_probability_rise = 8;
+
+    //四星角色中奖基础概率
+    public static final double four_star_character_base_probability = 0.051;
+
+    //四星角色中奖提升概率
+    public static final double four_star_character_rise_probability = 0.4751;
+
+    //五星角色中奖概率开始上升
+    public static final Integer five_star_character_probability_rise = 73;
+
+    //5星角色中奖基础概率
+    public static final double five_star_character_base_probability = 0.006;
+
+    //5星角色中奖提升概率
+    public static final double five_star_character_rise_probability = 0.06;
+
     //未保底
     public static final Integer UN_GUARANTEED = 0;
 
