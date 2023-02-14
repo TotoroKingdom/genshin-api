@@ -1,7 +1,6 @@
 package com.totoro.controller;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.totoro.constants.Result;
 import com.totoro.pojo.User;
 import com.totoro.pojo.vo.UserVo;

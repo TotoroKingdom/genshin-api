@@ -25,6 +25,7 @@ public class GlobalExceptionHandler {
     //业务异常
     @ExceptionHandler(ServiceException.class)
     public Result handleServiceException(ServiceException e, HttpServletRequest request){
+        log.error("请求地址'{}',发生业务异常.", request.getRequestURI(), e);
         log.error(e.getMessage(), e);
         Integer code = e.getCode();
         String message = e.getMessage();
@@ -73,8 +74,8 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public Result handleMethodArgumentNotValidException(MethodArgumentNotValidException e){
         log.error(e.getMessage(), e);
-        String errorMsg = e.getBindingResult().getFieldError().getDefaultMessage();
-        return Result.error(errorMsg);
+        String defaultMessage = e.getBindingResult().getAllErrors().get(0).getDefaultMessage();
+        return Result.error(defaultMessage);
     }
 
 }

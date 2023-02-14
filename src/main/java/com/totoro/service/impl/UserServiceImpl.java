@@ -46,8 +46,10 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
     @SneakyThrows
     @Override
     public void add(User user) {
-        String pwd = RsaUtils.decryptByPrivateKey(user.getPassword());
-        user.setPassword(SecurityUtils.encryptPassword(pwd));
+        if (ObjectUtil.isNotNull(user.getPassword())){
+            String pwd = RsaUtils.decryptByPrivateKey(user.getPassword());
+            user.setPassword(SecurityUtils.encryptPassword(pwd));
+        }
         userMapper.insert(user);
 
     }
@@ -99,7 +101,6 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
         wrapper.eq(User::getUsername, username);
 
         User user = userMapper.selectOne(wrapper);
-
         return user;
     }
 }

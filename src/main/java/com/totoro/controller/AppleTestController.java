@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.totoro.annonation.ApiResult;
 import com.totoro.constants.Result;
+import com.totoro.exception.ServiceException;
 import com.totoro.pojo.Apple;
 import com.totoro.pojo.User;
 import com.totoro.pojo.vo.UserVo;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import java.util.Optional;
 
 /**
  * @author:totoro
@@ -43,6 +45,10 @@ public class AppleTestController {
     @RequestMapping("union")
     public Result union(@RequestBody User user){
 
+        if (true){
+            throw new ServiceException("异常测试");
+        }
+
         IPage<UserVo> userVoList = userService.findUserVoList(user);
 
         return Result.success(userVoList);
@@ -50,6 +56,7 @@ public class AppleTestController {
 
     @RequestMapping("add")
     public Result add(@RequestBody @Validated User user){
+
         userService.add(user);
         return Result.success("新增成功");
     }
