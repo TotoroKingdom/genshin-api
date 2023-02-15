@@ -9,6 +9,7 @@ import com.totoro.pojo.Card;
 import com.totoro.pojo.Pray;
 import com.totoro.service.PrayService;
 import com.totoro.utils.RandomUtils;
+import com.totoro.utils.SecurityUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
@@ -29,11 +30,11 @@ public class PrayServiceImpl extends ServiceImpl<PrayMapper, Pray> implements Pr
     @Override
     public Card push() {
 
-//        Long userId = SecurityUtils.getUserId();
-        Long userId = 1L;
+        Long userId = SecurityUtils.getUserId();
         Pray pray = findByUserId(userId);
         //抽五星
         if (fiveStarLottery(pray)){
+
             return chooseFiveStarCard(pray);
         }
         if (fourStarLottery(pray)){

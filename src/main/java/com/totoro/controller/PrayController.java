@@ -1,6 +1,7 @@
 package com.totoro.controller;
 
 import com.totoro.constants.Result;
+import com.totoro.pojo.Card;
 import com.totoro.service.PrayService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -25,9 +26,8 @@ public class PrayController {
     //单抽
     @PostMapping("push")
     public Result push(){
-
-
-        return Result.success(null);
+        Card card = prayService.push();
+        return Result.success(card);
     }
 
 }

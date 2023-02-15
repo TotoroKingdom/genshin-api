@@ -4,7 +4,6 @@ import cn.hutool.core.util.ObjectUtil;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.totoro.exception.ServiceException;
 import com.totoro.utils.SpringUtils;
 import lombok.SneakyThrows;
 

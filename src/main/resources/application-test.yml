@@ -52,7 +52,7 @@ mybatis-plus:
   mapper-locations: classpath:com.totoro.mapper.*.xml
   type-aliases-package: com.totoro.pojo
   configuration:
-    map-underscore-to-camel-case: false
+    map-underscore-to-camel-case: true
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
 
 springdoc:

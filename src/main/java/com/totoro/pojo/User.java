@@ -34,7 +34,9 @@ public class User implements Serializable {
 
   //状态 00未激活 01激活 02停用
   private String status;
+
   private String registerCode;
+
   private String avatar;
   private Date createTime;
   private Date updateTime;

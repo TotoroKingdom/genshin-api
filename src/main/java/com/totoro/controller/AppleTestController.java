@@ -56,7 +56,6 @@ public class AppleTestController {
 
     @RequestMapping("add")
     public Result add(@RequestBody @Validated User user){
-
         userService.add(user);
         return Result.success("新增成功");
     }

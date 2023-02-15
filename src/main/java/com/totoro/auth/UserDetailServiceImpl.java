@@ -35,7 +35,6 @@ public class UserDetailServiceImpl implements UserDetailsService {
         if (UserConstants.NOT_ACTIVATED.equals(user.getStatus())) {
             throw new ServiceException("账号未激活");
         }
-
         UserDetails loginUser = new LoginUser(user,permissions);
         return loginUser;
     }
