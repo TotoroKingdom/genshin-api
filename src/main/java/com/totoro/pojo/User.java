@@ -10,7 +10,7 @@ import com.totoro.annonation.UniqueCheck;
 import lombok.Data;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDateTime;
 
 @Data
 @TableName("t_user")
@@ -38,10 +38,16 @@ public class User implements Serializable {
   private String registerCode;
 
   private String avatar;
-  private Date createTime;
-  private Date updateTime;
+
+  @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+  private LocalDateTime createTime;
+  @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+  private LocalDateTime updateTime;
+  @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
   private Long createBy;
+  @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
   private Long updateBy;
+  @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
   private Integer version;
   
 

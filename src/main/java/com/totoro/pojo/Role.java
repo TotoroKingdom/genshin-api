@@ -3,10 +3,11 @@ package com.totoro.pojo;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDateTime;
 
 /**
  * @author:totoro
@@ -26,13 +27,14 @@ public class Role implements Serializable {
     //角色编码
     private String roleKey;
 
-    private Date creatTime;
-
-    private Date updateTime;
-
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    private LocalDateTime createTime;
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    private LocalDateTime updateTime;
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private Long createBy;
-
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private Long updateBy;
-
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private Integer version;
 }
