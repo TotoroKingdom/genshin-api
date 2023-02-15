@@ -1,7 +1,9 @@
 package com.totoro.controller;
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.totoro.constants.Result;
 import com.totoro.pojo.Wishes;
+import com.totoro.pojo.vo.LeftTimeVo;
 import com.totoro.service.WishesService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
@@ -29,7 +31,7 @@ public class WishesController {
      * @return
      */
     @PostMapping("add")
-    public Result add(@RequestBody @Valid Wishes wishes){
+    public Result<Integer> add(@RequestBody @Valid Wishes wishes){
 
         return Result.success(wishesService.add(wishes));
     }
@@ -40,7 +42,7 @@ public class WishesController {
      * @return
      */
     @PostMapping("update")
-    public Result update(@RequestBody Wishes wishes){
+    public Result<Integer> update(@RequestBody Wishes wishes){
 
         return Result.success(wishesService.renew(wishes));
     }
@@ -51,7 +53,7 @@ public class WishesController {
      * @return
      */
     @PostMapping("find")
-    public Result find(@RequestParam("id") Long id){
+    public Result<Wishes> find(@RequestParam("id") Long id){
 
         return Result.success(wishesService.findById(id));
     }
@@ -62,7 +64,7 @@ public class WishesController {
      * @return
      */
     @PostMapping("countdown")
-    public Result countdown(@RequestParam("id") Long id){
+    public Result<LeftTimeVo> countdown(@RequestParam("id") Long id){
 
         return Result.success(wishesService.countdown(id));
     }
@@ -73,7 +75,7 @@ public class WishesController {
      * @return
      */
     @PostMapping("page")
-    public Result page(@RequestBody Wishes wishes){
+    public Result<Page<Wishes>> page(@RequestBody Wishes wishes){
 
         return Result.success(wishesService.page(wishes));
     }
@@ -85,7 +87,7 @@ public class WishesController {
      * @return
      */
     @PostMapping("delete")
-    public Result delete(@RequestParam("id") Long id){
+    public Result<Integer> delete(@RequestParam("id") Long id){
 
         return Result.success(wishesService.deleteById(id));
     }
