@@ -22,4 +22,8 @@ public class PrayRecordServiceImpl extends ServiceImpl<PrayRecordMapper, PrayRec
     private PrayRecordMapper prayRecordMapper;
 
 
+    @Override
+    public int record(PrayRecord prayRecord) {
+        return 0;
+    }
 }

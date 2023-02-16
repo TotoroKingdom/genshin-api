@@ -1,11 +1,10 @@
 package com.totoro.strategy;
 
+import com.totoro.pojo.Card;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import javax.annotation.Resource;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * @author:totoro
@@ -21,14 +20,9 @@ class LotteryStrategyTest {
     @Test
     void strategy(){
         LotteryService lotteryService1 = lotteryStrategy.getLotteryService("01");
-        LotteryService lotteryService2 = lotteryStrategy.getLotteryService("02");
-        LotteryService lotteryService3 = lotteryStrategy.getLotteryService("03");
-        LotteryService lotteryService4 = lotteryStrategy.getLotteryService("00");
 
-        lotteryService1.lottery();
-        lotteryService2.lottery();
-        lotteryService3.lottery();
-        lotteryService4.lottery();
+        Card card = lotteryService1.chooseThreeStarCard();
+
     }
 
 }

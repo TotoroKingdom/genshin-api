@@ -13,6 +13,21 @@ import java.util.List;
 public interface CardService {
 
     /**
+     * 根据卡片条件查询-常驻
+     * @param card
+     * @return
+     */
+    List<Card> findByCard(Card card);
+
+    /**
+     * 根据祈愿活动ID和卡片条件查询
+     * @param wishId
+     * @param card
+     * @return
+     */
+    List<Card> findByWishesIdAndCard(Long wishId, Card card);
+
+    /**
      * 根据祈愿活动ID查询
      * @param wishId
      * @return

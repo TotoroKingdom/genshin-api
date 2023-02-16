@@ -9,8 +9,21 @@ import java.util.Random;
  **/
 public class RandomUtils {
 
-    public static boolean guaranteed(){
+    /**
+     * 抛硬币，二分一概率
+     * @return
+     */
+    public static boolean coinToss(){
         Random random = new Random();
         return random.nextBoolean();
+    }
+
+    /**
+     * 在列表中随机选一个
+     * @return
+     */
+    public static int randomList(int size){
+        Random random = new Random();
+        return random.nextInt(size);
     }
 }

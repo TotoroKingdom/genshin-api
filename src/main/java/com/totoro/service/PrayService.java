@@ -12,6 +12,13 @@ import com.totoro.pojo.Wishes;
 public interface PrayService {
 
     /**
+     * 更新pray
+     * @param pray
+     * @return
+     */
+    int renew(Pray pray);
+
+    /**
      * 祈愿
      */
     Card push(Wishes wishes);

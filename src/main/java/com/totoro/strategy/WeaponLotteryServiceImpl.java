@@ -1,5 +1,7 @@
 package com.totoro.strategy;
 
+import com.totoro.pojo.Card;
+import com.totoro.pojo.Pray;
 import org.springframework.stereotype.Service;
 
 /**
@@ -8,9 +10,28 @@ import org.springframework.stereotype.Service;
  * @description: 武器抽奖实现
  */
 @Service("WeaponLotteryService")
-public class WeaponLotteryServiceImpl implements LotteryService {
+public class WeaponLotteryServiceImpl extends LotteryService {
+
+
     @Override
-    public void lottery() {
-        System.out.println("武器池抽奖");
+    public boolean fiveStarLottery(Pray pray) {
+        return false;
     }
+
+    @Override
+    public Card chooseFiveStarCard(Pray fiveStarCharacterUp, Long wishId) {
+        return null;
+    }
+
+    @Override
+    public boolean fourStarLottery(Pray pray) {
+        return false;
+    }
+
+    @Override
+    public Card chooseFourStarCard(Pray pray, Long wishId) {
+        return null;
+    }
+
+
 }

@@ -1,5 +1,7 @@
 package com.totoro.strategy;
 
+import com.totoro.pojo.Card;
+import com.totoro.pojo.Pray;
 import org.springframework.stereotype.Service;
 
 /**
@@ -8,10 +10,28 @@ import org.springframework.stereotype.Service;
  * @description: 常驻抽奖实现
  */
 @Service("IndefiniteLotteryService")
-public class IndefiniteLotteryServiceImpl implements LotteryService {
-    @Override
-    public void lottery() {
-        System.out.println("常驻抽奖");
+public class IndefiniteLotteryServiceImpl extends LotteryService {
 
+
+    @Override
+    public boolean fiveStarLottery(Pray pray) {
+        return false;
     }
+
+    @Override
+    public Card chooseFiveStarCard(Pray fiveStarCharacterUp, Long wishId) {
+        return null;
+    }
+
+    @Override
+    public boolean fourStarLottery(Pray pray) {
+        return false;
+    }
+
+    @Override
+    public Card chooseFourStarCard(Pray pray, Long wishId) {
+        return null;
+    }
+
+
 }

@@ -5,10 +5,8 @@ import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.totoro.constants.CardConstants;
 import com.totoro.mapper.CardMapper;
 import com.totoro.pojo.Card;
-import com.totoro.pojo.User;
 import com.totoro.service.CardService;
 import com.totoro.utils.ParamsUtils;
 import com.totoro.utils.SecurityUtils;
@@ -30,6 +28,31 @@ public class CardServiceImpl extends ServiceImpl<CardMapper, Card> implements Ca
     @Resource
     private CardMapper cardMapper;
 
+
+    @Override
+    public List<Card> findByCard(Card card) {
+
+        LambdaQueryWrapper<Card> wrapper = new LambdaQueryWrapper<>();
+
+        wrapper.eq(ObjectUtil.isNotNull(card.getCardType()), Card::getCardType, card.getCardType());
+        wrapper.eq(ObjectUtil.isNotNull(card.getStars()), Card::getStars, card.getStars());
+        wrapper.eq(ObjectUtil.isNotNull(card.getUp()), Card::getUp, card.getUp());
+        wrapper.eq(ObjectUtil.isNotNull(card.getIndefinite()),Card::getIndefinite, card.getIndefinite());
+
+        return cardMapper.selectList(wrapper);
+    }
+
+    @Override
+    public List<Card> findByWishesIdAndCard(Long wishId, Card card) {
+        QueryWrapper<Object> wrapper = new QueryWrapper<>();
+        wrapper.eq("cw.wished_id",wishId);
+        wrapper.eq(ObjectUtil.isNotNull(card.getCardType()), "c.card_type", card.getCardType());
+        wrapper.eq(ObjectUtil.isNotNull(card.getStars()), "c.stars", card.getStars());
+        wrapper.eq(ObjectUtil.isNotNull(card.getUp()), "c.up", card.getUp());
+        wrapper.eq(ObjectUtil.isNotNull(card.getIndefinite()),"c.indefinite", card.getIndefinite());
+
+        return cardMapper.findByWishesId(wrapper);
+    }
 
     @Override
     public List<Card> findByWishesId(Long wishId) {
