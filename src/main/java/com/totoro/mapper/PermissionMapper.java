@@ -18,6 +18,11 @@ import java.util.List;
 @Mapper
 public interface PermissionMapper extends BaseMapper<Permission> {
 
+    /**
+     * 查询用户拥有的权限key
+     * @param wrapper
+     * @return
+     */
     @Select("SELECT p.permission_key \n" +
             "FROM t_user u \n" +
             "LEFT JOIN t_user_role ur on u.id = ur.user_id\n" +

@@ -1,22 +1,31 @@
 package com.totoro.service.impl;
 
+import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.util.ObjectUtil;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.totoro.constants.WishConstants;
+import com.totoro.exception.ServiceException;
 import com.totoro.mapper.WishesMapper;
+import com.totoro.pojo.Card;
+import com.totoro.pojo.CardWishes;
 import com.totoro.pojo.Wishes;
+import com.totoro.pojo.dto.Params;
 import com.totoro.pojo.vo.LeftTimeVo;
+import com.totoro.service.CardService;
+import com.totoro.service.CardWishesService;
 import com.totoro.service.WishesService;
 import com.totoro.utils.ParamsUtils;
 import com.totoro.utils.SecurityUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.time.Duration;
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -30,25 +39,45 @@ public class WishesServiceImpl extends ServiceImpl<WishesMapper, Wishes> impleme
 
     @Resource
     private WishesMapper wishesMapper;
+    @Resource
+    private CardWishesService cardWishesService;
+    @Resource
+    private CardService cardService;
 
-
+    @Transactional(rollbackFor = Exception.class)
     @Override
     public int add(Wishes wishes) {
-        wishes.setCreateBy(SecurityUtils.getUserId());
 
-        return wishesMapper.insert(wishes);
+        wishes.setCreateBy(SecurityUtils.getUserId());
+        int insert = wishesMapper.insert(wishes);
+
+        //关联卡片人ID
+        cardWishesService.associationCardAndWishes(wishes.getCardIds(), wishes.getId());
+
+        return insert;
     }
 
+    @Transactional(rollbackFor = Exception.class)
     @Override
     public int renew(Wishes wishes) {
         wishes.setUpdateBy(SecurityUtils.getUserId());
 
-        return wishesMapper.updateById(wishes);
+        int i = wishesMapper.updateById(wishes);
+
+        Optional.ofNullable(wishes.getCardIds()).ifPresent( w ->{
+            cardWishesService.removeAssociationCardAndWishes(wishes.getId());
+            cardWishesService.associationCardAndWishes(wishes.getCardIds(), wishes.getId());
+        });
+
+        return i;
     }
 
     @Override
     public Wishes findById(Long id) {
-        return wishesMapper.selectById(id);
+        Wishes wishes = wishesMapper.selectById(id);
+        List<Card> cards = cardService.findByWishesId(id);
+        wishes.setCards(cards);
+        return wishes;
     }
 
     @Override
@@ -74,9 +103,20 @@ public class WishesServiceImpl extends ServiceImpl<WishesMapper, Wishes> impleme
     public Page<Wishes> page(Wishes wishes) {
 
         Page page = ParamsUtils.getPage();
+        Params params = ParamsUtils.getParams();
         LambdaQueryWrapper<Wishes> wrapper = new LambdaQueryWrapper<>();
-        wrapper.like(ObjectUtil.isNotNull(wishes.getWishesName()),Wishes::getWishesName,wishes.getWishesName());
+
+        wrapper.eq(ObjectUtil.isNotNull(wishes.getWishesType()), Wishes::getWishesType, wishes.getWishesType());
+        wrapper.like(ObjectUtil.isNotNull(wishes.getWishesName()), Wishes::getWishesName, wishes.getWishesName());
+        wrapper.eq(ObjectUtil.isNotNull(wishes.getStatus()), Wishes::getStatus, wishes.getStatus());
+
+        if (ObjectUtil.isNotNull(params.getBeginTime()) && ObjectUtil.isNotNull(params.getEndTime())){
+            wrapper.and(w -> w.between(Wishes::getBeginTime,params.getBeginTime(),params.getEndTime())
+                    .or()
+                    .between(Wishes::getEndTime,params.getBeginTime(),params.getEndTime()));
+        }
         wrapper.orderByDesc(Wishes::getId);
+
         Page<Wishes> wishesPage = wishesMapper.selectPage(page, wrapper);
         LocalDateTime now = LocalDateTime.now();
         //设定状态
@@ -97,9 +137,14 @@ public class WishesServiceImpl extends ServiceImpl<WishesMapper, Wishes> impleme
         return wishesPage;
     }
 
+    @Transactional(rollbackFor = Exception.class)
     @Override
     public int deleteById(Long id) {
+        int i = wishesMapper.deleteById(id);
 
-        return wishesMapper.deleteById(id);
+        //删除联系
+        cardWishesService.removeAssociationCardAndWishes(id);
+
+        return i;
     }
 }

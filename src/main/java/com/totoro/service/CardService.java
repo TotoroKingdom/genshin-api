@@ -3,12 +3,21 @@ package com.totoro.service;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.totoro.pojo.Card;
 
+import java.util.List;
+
 /**
  * @author: totoro
  * @createDate: 2023 02 12 22 52
  * @description:
  **/
 public interface CardService {
+
+    /**
+     * 根据祈愿活动ID查询
+     * @param wishId
+     * @return
+     */
+    List<Card> findByWishesId(Long wishId);
 
     /**
      * 新增

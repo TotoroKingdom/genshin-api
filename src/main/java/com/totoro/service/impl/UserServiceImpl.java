@@ -34,24 +34,24 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
     private UserMapper userMapper;
 
     @Override
-    public void renew(User user) {
+    public int renew(User user) {
         User u = new User();
         u.setNickname(u.getNickname());
         u.setUsername(u.getUsername());
         u.setStatus(user.getStatus());
         u.setAvatar(user.getAvatar());
-        int i = userMapper.updateById(u);
+        return userMapper.updateById(u);
     }
 
     @SneakyThrows
     @Override
-    public void add(User user) {
+    public int add(User user) {
         if (ObjectUtil.isNotNull(user.getPassword())){
             String pwd = RsaUtils.decryptByPrivateKey(user.getPassword());
             user.setPassword(SecurityUtils.encryptPassword(pwd));
         }
-        userMapper.insert(user);
 
+        return userMapper.insert(user);
     }
 
     @Override
@@ -71,6 +71,19 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
         Page<UserVo> userVoList = userMapper.findUserVoList(ParamsUtils.getPage(), wrapper);
 
         return userVoList;
+    }
+
+    @Override
+    public UserVo findById(Long id) {
+
+        User user = userMapper.selectById(id);
+
+        return null;
+    }
+
+    @Override
+    public int deleteById(Long id) {
+        return 0;
     }
 
     @Override

@@ -17,19 +17,33 @@ public interface UserService {
      * 更新
      * @param user
      */
-    void renew(User user);
+    int renew(User user);
 
     /**
      * 新增
      * @param user
      */
-    void add(User user);
+    int add(User user);
 
     /**
      * 查询用户及关联的角色
      * @return
      */
     IPage<UserVo> findUserVoList(User user);
+
+    /**
+     * 根据ID查用户信息
+     * @param id
+     * @return
+     */
+    UserVo findById(Long id);
+
+    /**
+     * 根据ID删除
+     * @param id
+     * @return
+     */
+    int deleteById(Long id);
 
     /**
      * 根据注册码查询

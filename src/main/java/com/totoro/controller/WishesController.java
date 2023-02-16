@@ -1,7 +1,9 @@
 package com.totoro.controller;
 
+import cn.hutool.core.collection.CollUtil;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.totoro.constants.Result;
+import com.totoro.exception.ServiceException;
 import com.totoro.pojo.Wishes;
 import com.totoro.pojo.vo.LeftTimeVo;
 import com.totoro.service.WishesService;
@@ -32,7 +34,9 @@ public class WishesController {
      */
     @PostMapping("add")
     public Result<Integer> add(@RequestBody @Valid Wishes wishes){
-
+        if (CollUtil.isEmpty(wishes.getCardIds())){
+            throw new ServiceException("必须关联卡池ID");
+        }
         return Result.success(wishesService.add(wishes));
     }
 

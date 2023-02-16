@@ -2,8 +2,10 @@ package com.totoro.service.impl;
 
 import cn.hutool.core.util.ObjectUtil;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.totoro.constants.CardConstants;
 import com.totoro.mapper.CardMapper;
 import com.totoro.pojo.Card;
 import com.totoro.pojo.User;
@@ -14,6 +16,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * @author: totoro
@@ -27,6 +30,15 @@ public class CardServiceImpl extends ServiceImpl<CardMapper, Card> implements Ca
     @Resource
     private CardMapper cardMapper;
 
+
+    @Override
+    public List<Card> findByWishesId(Long wishId) {
+
+        QueryWrapper<Object> wrapper = new QueryWrapper<>();
+        wrapper.eq("cw.wished_id",wishId);
+
+        return cardMapper.findByWishesId(wrapper);
+    }
 
     @Override
     public int add(Card card) {

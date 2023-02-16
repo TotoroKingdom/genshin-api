@@ -5,9 +5,13 @@ import com.totoro.constants.Result;
 import com.totoro.pojo.User;
 import com.totoro.pojo.vo.UserVo;
 import com.totoro.service.UserService;
+import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Update;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import javax.validation.Valid;
 
 /**
  * 用户管理API
@@ -23,6 +27,28 @@ public class UserController {
     private UserService userService;
 
     /**
+     * 更新用户
+     * @param user
+     * @return
+     */
+    @RequestMapping("update")
+    public Result<Integer> update(@RequestBody @Validated(Update.class) User user){
+
+        return Result.success(userService.renew(user));
+    }
+
+    /**
+     * 新增用户
+     * @param user
+     * @return
+     */
+    @RequestMapping("add")
+    public Result<Integer> add(@RequestBody @Validated(Insert.class) User user){
+
+        return Result.success(userService.add(user));
+    }
+
+    /**
      * 分页查询
      * @param user
      * @return
@@ -36,15 +62,26 @@ public class UserController {
     }
 
     /**
-     * 新增用户
-     * @param user
+     * 根据ID查用户
+     * @param id
      * @return
      */
-    @RequestMapping("add")
-    public Result<IPage<UserVo>> add(@RequestBody User user){
+    @RequestMapping("find")
+    public Result<UserVo> find(@RequestParam("id") Long id){
 
-        userService.add(user);
-
-        return Result.success(null);
+        return Result.success(userService.findById(id));
     }
+
+    /**
+     * 删除用户
+     * @param id
+     * @return
+     */
+    @RequestMapping("delete")
+    public Result<Integer> delete(@RequestParam("id") Long id){
+
+        return Result.success(userService.deleteById(id));
+    }
+
+
 }

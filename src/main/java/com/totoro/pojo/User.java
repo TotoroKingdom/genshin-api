@@ -7,14 +7,18 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.totoro.annonation.UniqueCheck;
+import com.totoro.service.UserService;
 import lombok.Data;
+import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Update;
 
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
 @Data
 @TableName("t_user")
-@UniqueCheck(filedName = "username")
+@UniqueCheck(filedName = "username",groups = {Insert.class, Update.class})
 public class User implements Serializable {
 
   @TableId(type = IdType.AUTO)
@@ -28,18 +32,21 @@ public class User implements Serializable {
   /**
    * 用户名
    */
+  @NotNull(groups = {Insert.class})
   @TableField("username")
   private String username;
 
   /**
    * 密码
    */
+  @NotNull(groups = {Insert.class})
   @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
   private String password;
 
   /**
    * 邮箱
    */
+  @NotNull(groups = {Insert.class})
   @TableField("email")
   private String email;
 

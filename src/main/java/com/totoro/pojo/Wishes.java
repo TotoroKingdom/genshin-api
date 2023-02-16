@@ -8,9 +8,11 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Data
 @TableName("t_wishes")
@@ -57,9 +59,18 @@ public class Wishes implements Serializable {
   @NotNull
   private LocalDateTime endTime;
 
-//  //活动剩余时间
-//  @TableField(exist = false)
-//  private LocalDateTime timeLeft;
+  /**
+   * 关联的卡片人ID
+   */
+  @NotEmpty
+  @TableField(exist = false)
+  private List<Long> cardIds;
+
+  /**
+   * 关联的卡片人信息
+   */
+  @TableField(exist = false)
+  private List<Card> cards;
 
   @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
   private LocalDateTime createTime;

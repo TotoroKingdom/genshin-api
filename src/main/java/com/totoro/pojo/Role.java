@@ -6,6 +6,7 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
@@ -24,11 +25,13 @@ public class Role implements Serializable {
     /**
      * 角色名称
      */
+    @NotNull
     private String roleName;
 
     /**
      * 角色编码
      */
+    @NotNull
     private String roleKey;
 
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
