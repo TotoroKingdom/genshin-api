@@ -2,6 +2,7 @@ package com.totoro.service;
 
 import com.totoro.pojo.Card;
 import com.totoro.pojo.Pray;
+import com.totoro.pojo.Wishes;
 
 /**
  * @author: totoro
@@ -13,7 +14,7 @@ public interface PrayService {
     /**
      * 祈愿
      */
-    Card push();
+    Card push(Wishes wishes);
 
     /**
      * 根据用户ID查询抽奖信息

@@ -30,6 +30,8 @@ class GenshinApiApplicationTests {
     @Resource
     private PrayMapper prayMapper;
 
+
+
     void login(){
         User user = new User();
         user.setId(1L);
@@ -48,7 +50,7 @@ class GenshinApiApplicationTests {
         int i = 0;
         ArrayList<String> cards = new ArrayList<>();
         for (; i < 10; i++) {
-            Card card = prayService.push();
+            Card card = prayService.push(null);
             cards.add(card.getCardName());
             String cardName = card.getCardName();
             if (cardName.equals("三星物品")){

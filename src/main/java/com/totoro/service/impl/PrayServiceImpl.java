@@ -7,6 +7,7 @@ import com.totoro.constants.PrayConstants;
 import com.totoro.mapper.PrayMapper;
 import com.totoro.pojo.Card;
 import com.totoro.pojo.Pray;
+import com.totoro.pojo.Wishes;
 import com.totoro.service.PrayService;
 import com.totoro.utils.RandomUtils;
 import com.totoro.utils.SecurityUtils;
@@ -28,7 +29,7 @@ public class PrayServiceImpl extends ServiceImpl<PrayMapper, Pray> implements Pr
     private PrayMapper prayMapper;
 
     @Override
-    public Card push() {
+    public Card push(Wishes wishes) {
 
         Long userId = SecurityUtils.getUserId();
         Pray pray = findByUserId(userId);
