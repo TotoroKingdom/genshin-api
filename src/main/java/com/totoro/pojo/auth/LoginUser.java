@@ -20,14 +20,29 @@ import java.util.stream.Collectors;
 @Data
 public class LoginUser implements UserDetails {
 
+    /**
+     * 用户
+     */
     private User user;
 
+    /**
+     * 权限集
+     */
     private Set<String> permissions;
 
+    /**
+     * 权限集合
+     */
     private List<GrantedAuthority> authorities;
 
+    /**
+     * jwtToken
+     */
     private String token;
 
+    /**
+     * 登录有效时间
+     */
     private Long expireTime;
 
     public LoginUser(){}

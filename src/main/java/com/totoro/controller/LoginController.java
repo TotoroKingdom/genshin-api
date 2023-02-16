@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 /**
+ * 登录API
  * @author:totoro
  * @createDate:2023/2/8
  * @description:
@@ -24,6 +25,12 @@ public class LoginController {
     @Autowired
     private LoginService loginService;
 
+    /**
+     * 登录接口
+     * @param body
+     * @return
+     * @throws Exception
+     */
     @PostMapping("login")
     public Result login(@RequestBody LoginBody body) throws Exception {
         Assert.notEmpty(body.getPassword(),"密码不能为空");

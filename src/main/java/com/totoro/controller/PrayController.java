@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.annotation.Resource;
 
 /**
+ * 抽奖API
  * @author: totoro
  * @createDate: 2023 02 14 22 42
  * @description:
@@ -23,7 +24,10 @@ public class PrayController {
     @Resource
     private PrayService prayService;
 
-    //单抽
+    /**
+     * 单抽
+     * @return
+     */
     @PostMapping("push")
     public Result push(){
         Card card = prayService.push();

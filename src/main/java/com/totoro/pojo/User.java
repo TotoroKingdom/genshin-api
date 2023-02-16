@@ -20,23 +20,42 @@ public class User implements Serializable {
   @TableId(type = IdType.AUTO)
   private Long id;
 
-
+  /**
+   * 昵称
+   */
   private String nickname;
 
+  /**
+   * 用户名
+   */
   @TableField("username")
   private String username;
 
+  /**
+   * 密码
+   */
   @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
   private String password;
 
+  /**
+   * 邮箱
+   */
   @TableField("email")
   private String email;
 
-  //状态 00未激活 01激活 02停用
+  /**
+   * 状态 00未激活 01激活 02停用
+   */
   private String status;
 
+  /**
+   * 注册码
+   */
   private String registerCode;
 
+  /**
+   * 图片
+   */
   private String avatar;
 
   @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)

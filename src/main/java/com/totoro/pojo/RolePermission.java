@@ -19,7 +19,13 @@ public class RolePermission implements Serializable {
     @TableId(type = IdType.AUTO)
     private Long id;
 
+    /**
+     * 角色ID
+     */
     private Long roleId;
 
+    /**
+     * 权限ID
+     */
     private Long permissionId;
 }

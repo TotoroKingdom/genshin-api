@@ -21,10 +21,14 @@ public class Role implements Serializable {
     @TableId(type = IdType.AUTO)
     private Long id;
 
-    //角色名称
+    /**
+     * 角色名称
+     */
     private String roleName;
 
-    //角色编码
+    /**
+     * 角色编码
+     */
     private String roleKey;
 
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)

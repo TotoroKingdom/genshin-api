@@ -16,7 +16,13 @@ public class UserRole implements Serializable {
 
     private Long id;
 
+    /**
+     * 用户ID
+     */
     private Long userId;
 
+    /**
+     * 角色ID
+     */
     private Long roleId;
 }

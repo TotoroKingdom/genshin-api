@@ -16,12 +16,40 @@ public class PrayRecord implements Serializable {
 
   @TableId(type = IdType.AUTO)
   private Long id;
+
+  /**
+   * 用户ID
+   */
   private Long userId;
+
+  /**
+   * 祈愿ID
+   */
   private Long wishesId;
+
+  /**
+   * 祈愿类型 00常驻 01新手 02角色 03武器
+   */
   private String wishesType;
+
+  /**
+   * 卡片名称
+   */
   private String cardName;
+
+  /**
+   * 卡片ID
+   */
   private Long cardId;
+
+  /**
+   * 卡片类型 01角色 02武器
+   */
   private String cardType;
+
+  /**
+   * 祈愿时间
+   */
   private LocalDateTime wishTime;
 
   @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)

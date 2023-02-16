@@ -16,5 +16,8 @@ import java.util.List;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class UserVo extends User {
 
+    /**
+     * 角色列表
+     */
     private List<Role> roles;
 }

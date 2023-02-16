@@ -11,6 +11,7 @@ import java.io.Serializable;
  **/
 @Data
 public class LeftTimeVo implements Serializable {
+
     /**
      * 剩余分钟
      */

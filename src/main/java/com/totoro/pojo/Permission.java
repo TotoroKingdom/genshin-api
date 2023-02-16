@@ -21,34 +21,54 @@ public class Permission implements Serializable {
     @TableId(type = IdType.AUTO)
     private Long id;
 
-    //权限编码
+    /**
+     * 权限编码
+     */
     private String permissionKey;
 
-    //菜单名称
+    /**
+     * 菜单名称
+     */
     private String menuName;
 
-    //菜单父级名称
+    /**
+     * 菜单父级名称
+     */
     private String parentName;
 
-    //父级ID
+    /**
+     * 父级ID
+     */
     private Long parentId;
 
-    //排序
+    /**
+     * 排序
+     */
     private Integer orderNum;
 
-    //路由地址
+    /**
+     * 路由地址
+     */
     private String routerPath;
 
-    //组件
+    /**
+     * 组件
+     */
     private String component;
 
-    //1:显示 0：隐藏
+    /**
+     * 1:显示 0：隐藏
+     */
     private Integer visible;
 
-    //图标
+    /**
+     * 图标
+     */
     private String icon;
 
-    //备注
+    /**
+     * 备注
+     */
     private String remark;
 
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)

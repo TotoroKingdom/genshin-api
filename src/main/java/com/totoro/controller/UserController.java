@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.annotation.Resource;
 
 /**
+ * 用户管理API
  * @author:totoro
  * @createDate:2023/2/9
  * @description:
@@ -21,6 +22,11 @@ public class UserController {
     @Resource
     private UserService userService;
 
+    /**
+     * 分页查询
+     * @param user
+     * @return
+     */
     @RequestMapping("page")
     public Result page(@RequestBody User user){
 
@@ -29,6 +35,11 @@ public class UserController {
         return Result.success(userVoList);
     }
 
+    /**
+     * 新增用户
+     * @param user
+     * @return
+     */
     @RequestMapping("add")
     public Result add(@RequestBody User user){
 
