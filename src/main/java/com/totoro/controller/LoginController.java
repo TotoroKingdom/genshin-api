@@ -32,7 +32,7 @@ public class LoginController {
      * @throws Exception
      */
     @PostMapping("login")
-    public Result login(@RequestBody LoginBody body) throws Exception {
+    public Result<String> login(@RequestBody LoginBody body) throws Exception {
         Assert.notEmpty(body.getPassword(),"密码不能为空");
         String pwd = RsaUtils.decryptByPrivateKey(body.getPassword());
         body.setPassword(pwd);

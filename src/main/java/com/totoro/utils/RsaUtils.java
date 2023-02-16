@@ -10,7 +10,7 @@ import java.security.spec.PKCS8EncodedKeySpec;
 import java.security.spec.X509EncodedKeySpec;
 
 /**
- * @author:lrj
+ * @author:totoro
  * @createDate:2022/8/1
  * @description: Rsa工具
  */
@@ -48,8 +48,7 @@ public class RsaUtils {
      * @param text 待解密的信息
      * @return 解密后的文本
      */
-    public static String decryptByPublicKey(String publicKeyString, String text) throws Exception
-    {
+    public static String decryptByPublicKey(String publicKeyString, String text) throws Exception {
         X509EncodedKeySpec x509EncodedKeySpec = new X509EncodedKeySpec(Base64.decodeBase64(publicKeyString));
         KeyFactory keyFactory = KeyFactory.getInstance("RSA");
         PublicKey publicKey = keyFactory.generatePublic(x509EncodedKeySpec);
@@ -66,8 +65,7 @@ public class RsaUtils {
      * @param text 待加密的信息
      * @return 加密后的文本
      */
-    public static String encryptByPrivateKey(String privateKeyString, String text) throws Exception
-    {
+    public static String encryptByPrivateKey(String privateKeyString, String text) throws Exception {
         PKCS8EncodedKeySpec pkcs8EncodedKeySpec = new PKCS8EncodedKeySpec(Base64.decodeBase64(privateKeyString));
         KeyFactory keyFactory = KeyFactory.getInstance("RSA");
         PrivateKey privateKey = keyFactory.generatePrivate(pkcs8EncodedKeySpec);
@@ -84,8 +82,7 @@ public class RsaUtils {
      * @param text 待解密的文本
      * @return 解密后的文本
      */
-    public static String decryptByPrivateKey(String privateKeyString, String text) throws Exception
-    {
+    public static String decryptByPrivateKey(String privateKeyString, String text) throws Exception {
         PKCS8EncodedKeySpec pkcs8EncodedKeySpec5 = new PKCS8EncodedKeySpec(Base64.decodeBase64(privateKeyString));
         KeyFactory keyFactory = KeyFactory.getInstance("RSA");
         PrivateKey privateKey = keyFactory.generatePrivate(pkcs8EncodedKeySpec5);
@@ -102,8 +99,7 @@ public class RsaUtils {
      * @param text 待加密的文本
      * @return 加密后的文本
      */
-    public static String encryptByPublicKey(String publicKeyString, String text) throws Exception
-    {
+    public static String encryptByPublicKey(String publicKeyString, String text) throws Exception {
         X509EncodedKeySpec x509EncodedKeySpec2 = new X509EncodedKeySpec(Base64.decodeBase64(publicKeyString));
         KeyFactory keyFactory = KeyFactory.getInstance("RSA");
         PublicKey publicKey = keyFactory.generatePublic(x509EncodedKeySpec2);
@@ -118,8 +114,7 @@ public class RsaUtils {
      *
      * @return 生成后的公私钥信息
      */
-    public static RsaKeyPair generateKeyPair() throws NoSuchAlgorithmException
-    {
+    public static RsaKeyPair generateKeyPair() throws NoSuchAlgorithmException {
         KeyPairGenerator keyPairGenerator = KeyPairGenerator.getInstance("RSA");
         keyPairGenerator.initialize(1024);
         KeyPair keyPair = keyPairGenerator.generateKeyPair();
@@ -133,8 +128,7 @@ public class RsaUtils {
     /**
      * RSA密钥对对象
      */
-    public static class RsaKeyPair
-    {
+    public static class RsaKeyPair {
         private final String publicKey;
         private final String privateKey;
 

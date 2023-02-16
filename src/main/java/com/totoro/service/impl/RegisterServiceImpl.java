@@ -19,6 +19,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.Optional;
 
 /**
  * @author:totoro
@@ -46,13 +47,22 @@ public class RegisterServiceImpl implements RegisterService {
         String pwd = RsaUtils.decryptByPrivateKey(loginBody.getPassword());
 
         User user = userService.findUserByEmail(loginBody.getEmail());
+        User userByUserName = userService.findUserByUserName(loginBody.getUsername());
+
+        if (ObjectUtil.isNotNull(userByUserName)){
+            return Result.success("该用户已使用");
+        }
 
         if (ObjectUtil.isNotNull(user)){
             return Result.success("该邮箱已经注册");
         }
 
         User newUser = new User();
-        newUser.setUsername(loginBody.getEmail());
+        if (ObjectUtil.isNotNull(userByUserName)){
+            newUser.setUsername(loginBody.getUsername());
+        } else {
+            newUser.setUsername(loginBody.getEmail());
+        }
         newUser.setEmail(loginBody.getEmail());
         newUser.setPassword(SecurityUtils.encryptPassword(pwd));
         newUser.setRegisterCode(CodeUtils.getRegisterCode());

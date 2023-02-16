@@ -29,7 +29,7 @@ public class PrayController {
      * @return
      */
     @PostMapping("push")
-    public Result push(){
+    public Result<Card> push(){
         Card card = prayService.push();
         return Result.success(card);
     }

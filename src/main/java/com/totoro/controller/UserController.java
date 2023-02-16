@@ -28,7 +28,7 @@ public class UserController {
      * @return
      */
     @RequestMapping("page")
-    public Result page(@RequestBody User user){
+    public Result<IPage<UserVo>> page(@RequestBody User user){
 
         IPage<UserVo> userVoList = userService.findUserVoList(user);
 
@@ -41,7 +41,7 @@ public class UserController {
      * @return
      */
     @RequestMapping("add")
-    public Result add(@RequestBody User user){
+    public Result<IPage<UserVo>> add(@RequestBody User user){
 
         userService.add(user);
 
