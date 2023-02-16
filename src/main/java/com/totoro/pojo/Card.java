@@ -2,16 +2,21 @@ package com.totoro.pojo;
 
 
 import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.totoro.annonation.UniqueCheck;
 import lombok.Data;
 
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
+
 @Data
 @TableName("t_card")
+@UniqueCheck(filedName = "cardName")
 public class Card implements Serializable {
 
   /**
@@ -23,16 +28,20 @@ public class Card implements Serializable {
   /**
    * 01角色 02武器
    */
+  @NotNull
   private String cardType;
 
   /**
    * 名称
    */
+  @NotNull
+  @TableField("card_name")
   private String cardName;
 
   /**
    * 星级
    */
+  @NotNull
   private Integer stars;
 
   /**
