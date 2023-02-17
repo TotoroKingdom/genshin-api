@@ -105,6 +105,7 @@ public class Pray implements Serializable {
   /**
    * 常驻五星up 0：未保底 1:保底
    */
+  @Deprecated
   private Integer fiveStarIndefiniteUp;
 
   /**

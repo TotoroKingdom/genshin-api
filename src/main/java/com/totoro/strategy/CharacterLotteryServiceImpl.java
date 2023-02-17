@@ -33,10 +33,10 @@ public class CharacterLotteryServiceImpl extends LotteryService {
         double probabilityCalculate = fiveStarProbabilityCalculate(pray.getFiveStarCharacterNum());
         double random = Math.random();
         if (random <= probabilityCalculate){
-            log.info("抽中五星up角色");
+            log.info("抽中五星角色");
             return true;
         }
-        log.info("没抽中五星up角色  累计值+1");
+        log.info("没抽中五星角色  累计值+1");
         pray.setFiveStarCharacterNum(pray.getFiveStarCharacterNum() + 1);
         prayMapper.updateById(pray);
         return false;

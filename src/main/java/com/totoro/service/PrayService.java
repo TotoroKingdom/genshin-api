@@ -24,6 +24,13 @@ public interface PrayService {
     Card push(Wishes wishes);
 
     /**
+     * 定轨
+     * @param card
+     * @return
+     */
+    Long epitomized(Long cardId);
+
+    /**
      * 根据用户ID查询抽奖信息
      * @param userId
      * @return
