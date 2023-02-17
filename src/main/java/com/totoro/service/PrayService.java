@@ -4,6 +4,8 @@ import com.totoro.pojo.Card;
 import com.totoro.pojo.Pray;
 import com.totoro.pojo.Wishes;
 
+import java.util.List;
+
 /**
  * @author: totoro
  * @createDate: 2023 02 12 22 54
@@ -22,6 +24,13 @@ public interface PrayService {
      * 祈愿
      */
     Card push(Wishes wishes);
+
+    /**
+     * 十连祈愿
+     * @param wishes
+     * @return
+     */
+    List<Card> pushTen(Wishes wishes);
 
     /**
      * 定轨

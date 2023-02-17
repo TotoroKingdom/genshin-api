@@ -19,6 +19,8 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author: totoro
@@ -78,6 +80,17 @@ public class PrayServiceImpl extends ServiceImpl<PrayMapper, Pray> implements Pr
         prayRecordService.record(prayRecord);
 
         return card;
+    }
+
+    @Override
+    public List<Card> pushTen(Wishes wishes) {
+        ArrayList<Card> list = new ArrayList<>();
+
+        for (int i = 0; i < 10; i++) {
+            Card push = push(wishes);
+            list.add(push);
+        }
+        return list;
     }
 
     @Override
