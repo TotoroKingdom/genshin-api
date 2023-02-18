@@ -24,7 +24,7 @@ spring:
     host: smtp.qq.com
     port: 587
     username: totorokingdom@foxmail.com
-    password: myajkfkbqxdxbcjg
+    password: glmierhmrirobeei
   rabbitmq:
     addresses: 127.0.0.1
     username: admin
