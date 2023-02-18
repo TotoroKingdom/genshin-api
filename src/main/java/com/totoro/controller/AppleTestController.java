@@ -1,7 +1,6 @@
 package com.totoro.controller;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.totoro.constants.Result;
 import com.totoro.exception.ServiceException;
 import com.totoro.pojo.User;
@@ -65,9 +64,11 @@ public class AppleTestController {
      * @return
      */
     @GetMapping("test1")
-    @PreAuthorize("hasAuthority('test')")
-    public String test1(){
-        return "test1";
+    public Result<User> test1(){
+        User user = new User();
+        user.setId(1l);
+        user.setNickname("老黑");
+        return Result.success(user);
     }
 
     /**
