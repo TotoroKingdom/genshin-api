@@ -76,8 +76,8 @@ public class AppleTestController {
      * @return
      */
     @GetMapping("pre/auth")
-    @PreAuthorize("hasAuthority('auth')")
+    @PreAuthorize("hasAuthority('admin_key')")
     public String preAuth(){
-        return "auth";
+        return "admin-key";
     }
 }
