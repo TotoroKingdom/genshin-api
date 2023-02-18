@@ -2,7 +2,6 @@ package com.totoro.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Profile;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
@@ -13,7 +12,6 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
  * @createDate:2023/2/9
  * @description:
  */
-@Profile("dev")
 @Configuration
 public class ResourcesConfig implements WebMvcConfigurer {
 
