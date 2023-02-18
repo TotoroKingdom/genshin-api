@@ -10,6 +10,18 @@ import java.util.Random;
 public class RandomUtils {
 
     /**
+     * 3/4概率抽中问题
+     * @return
+     */
+    public static boolean weaponProbability(){
+        Random random = new Random();
+        if (random.nextInt(4) == 0){
+            return false;
+        }
+        return true;
+    }
+
+    /**
      * 抛硬币，二分一概率
      * @return
      */

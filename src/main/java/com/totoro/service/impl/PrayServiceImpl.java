@@ -3,6 +3,7 @@ package com.totoro.service.impl;
 import cn.hutool.core.util.ObjectUtil;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.totoro.constants.PrayConstants;
 import com.totoro.mapper.PrayMapper;
 import com.totoro.pojo.Card;
 import com.totoro.pojo.Pray;
@@ -18,6 +19,8 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author: totoro
@@ -77,6 +80,32 @@ public class PrayServiceImpl extends ServiceImpl<PrayMapper, Pray> implements Pr
         prayRecordService.record(prayRecord);
 
         return card;
+    }
+
+    @Override
+    public List<Card> pushTen(Wishes wishes) {
+        ArrayList<Card> list = new ArrayList<>();
+
+        for (int i = 0; i < 10; i++) {
+            Card push = push(wishes);
+            list.add(push);
+        }
+        return list;
+    }
+
+    @Override
+    public Long epitomized(Long cardId) {
+        Long userId = SecurityUtils.getUserId();
+        Pray pray = findByUserId(userId);
+
+        if (pray.getEpitomizedPathCardId().equals(cardId)){
+            log.info("已经定轨");
+            return cardId;
+        }
+        pray.setEpitomizedPathCardId(cardId);
+        pray.setEpitomizedPathUp(PrayConstants.ORDAINED_INIT);
+        prayMapper.updateById(pray);
+        return cardId;
     }
 
     @Override
