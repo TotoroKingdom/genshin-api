@@ -72,7 +72,7 @@ public class EmailImpl implements Email {
     @Override
     public String buildContent(String htmlUrl, String text) {
         if (StrUtil.isEmpty(htmlUrl)){
-            htmlUrl = "static/register.ftl";
+            htmlUrl = "static/register.html";
         }
 
         Resource resource = new ClassPathResource(htmlUrl);

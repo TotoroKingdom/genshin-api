@@ -83,7 +83,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
 
     @Override
     public int deleteById(Long id) {
-        return 0;
+        return userMapper.deleteById(id);
     }
 
     @Override

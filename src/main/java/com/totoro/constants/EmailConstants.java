@@ -11,5 +11,5 @@ public class EmailConstants {
     public static final String EMAIL_REGISTER_SUBJECT = "激活注册邮箱";
 
     //注册邮箱模板地址
-    public static final String EMAIL_REGISTER_TEMPLATE = "static/register.ftl";
+    public static final String EMAIL_REGISTER_TEMPLATE = "static/register.html";
 }
