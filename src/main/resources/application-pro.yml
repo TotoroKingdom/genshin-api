@@ -31,10 +31,10 @@ spring:
     password: admin
     virtual-host: test
   redis:
-    host: 192.168.121.121
+    host: localhost
     port: 6379
     database: 0
-    password: redis2022
+    password: 'redis2022'
     timeout: 10s
 
 ##日志
