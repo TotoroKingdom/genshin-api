@@ -92,7 +92,26 @@ public class PermissionServiceImpl extends ServiceImpl<PermissionMapper, Permiss
         return list;
     }
 
+    /**
+     * 设置子节点，
+     * chatGPT优化方案
+     * @param list
+     * @return
+     */
     public List<Permission> setChild(List<Permission> list){
+        if (CollUtil.isEmpty(list)){
+            return null;
+        }
+        Map<Long, List<Permission>> map = list.stream().collect(Collectors.groupingBy(Permission::getParentId));
+        for (Permission permission : list) {
+            List<Permission> temp = map.get(permission.getId());
+            setChild(temp);
+            permission.setChild(temp);
+        }
+        return list;
+    }
+
+    public List<Permission> setChild1(List<Permission> list){
         if (CollUtil.isEmpty(list)){
             return null;
         }
