@@ -40,7 +40,7 @@ public class PermissionController {
      * @return
      */
     @PostMapping("find")
-    public Result<Permission> add(@RequestParam("id") Long id){
+    public Result<Permission> find(@RequestParam("id") Long id){
 
         return null;
     }
@@ -63,8 +63,8 @@ public class PermissionController {
      */
     @PostMapping("page")
     public Result<Page<Permission>> page(@RequestBody Permission permission){
-
-        return null;
+        Page<Permission> page = permissionService.page(permission);
+        return Result.success(page);
     }
 
 

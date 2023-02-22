@@ -1,13 +1,17 @@
 package com.totoro.pojo;
 
 import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.List;
+import java.util.Set;
 
 /**
  * @author: totoro
@@ -16,6 +20,7 @@ import java.time.LocalDateTime;
  **/
 @Data
 @TableName("t_permission")
+@JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class Permission implements Serializable {
 
     @TableId(type = IdType.AUTO)
@@ -32,7 +37,7 @@ public class Permission implements Serializable {
     private String menuName;
 
     /**
-     * 菜单父级名称
+     * 父级名称
      */
     private String parentName;
 
@@ -70,6 +75,12 @@ public class Permission implements Serializable {
      * 备注
      */
     private String remark;
+
+    /**
+     * 子菜单
+     */
+    @TableField(exist = false)
+    private List<Permission> child;
 
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private LocalDateTime createTime;
