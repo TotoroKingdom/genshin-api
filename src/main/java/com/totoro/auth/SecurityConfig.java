@@ -11,8 +11,6 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-import org.springframework.security.web.authentication.logout.LogoutFilter;
-import org.springframework.web.filter.CorsFilter;
 
 import javax.annotation.Resource;
 
@@ -36,8 +34,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Resource
     private AuthenticationEntryPointImpl authenticationEntryPoint;
 
-    @Resource
-    private CorsFilter corsFilter;
+//    @Resource
+//    private CorsFilter corsFilter;
 
 
     @Bean
@@ -68,8 +66,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         http.addFilterBefore(jwtAuthenticationTokenFilter, UsernamePasswordAuthenticationFilter.class);
 
-        http.addFilterBefore(corsFilter, JwtAuthenticationTokenFilter.class);
-        http.addFilterBefore(corsFilter, LogoutFilter.class);
+//        http.addFilterBefore(corsFilter, JwtAuthenticationTokenFilter.class);
+//        http.addFilterBefore(corsFilter, LogoutFilter.class);
 
         http.cors();
     }

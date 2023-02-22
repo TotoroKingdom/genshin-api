@@ -17,27 +17,27 @@ spring:
     date-format: yyyy-MM-dd HH:mm:ss
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://192.168.121.1:3306/genshin-impart?useUnicode=true&characterEncoding=utf-8&useSSL=false&allowMultiQueries=true&serverTimezone=UTC&allowMultiQueries=true&useAffectedRows=true
+    url: jdbc:mysql://192.168.159.1:3306/genshin-impart?useUnicode=true&characterEncoding=utf-8&useSSL=false&allowMultiQueries=true&serverTimezone=UTC&allowMultiQueries=true&useAffectedRows=true
     username: root
     password: root
   mail:
     host: smtp.qq.com
     port: 587
     username: totorokingdom@foxmail.com
-    password: myajkfkbqxdxbcjg
+    password: glmierhmrirobeei
   rabbitmq:
-    addresses: 192.168.121.121
+    addresses: 127.0.0.1
     username: admin
     password: admin
     virtual-host: test
   redis:
-    host: 192.168.121.121
+    host: 127.0.0.1
     port: 6379
-    database: 0
-    password: redis2022
+    database: 11
+    password: 'redis2022'
     timeout: 10s
 
-##日志
+#日志
 logging:
   level:
     com.hime: info
@@ -56,7 +56,7 @@ mybatis-plus:
   configuration:
     map-underscore-to-camel-case: true
     log-impl: org.apache.ibatis.logging.slf4j.Slf4jImpl
-
+# 接口文档
 springdoc:
   packages-to-scan: com.totoro.controller
   swagger-ui:

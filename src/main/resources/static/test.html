@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>跨域测试页面</title>
+    <script src="http://code.jquery.com/jquery-1.4.1.min.js"></script>
+</head>
+<body>
+<h1>跨域测试</h1>
+<div>
+    <input type="button" onclick="mySubmit()" value=" 发送跨域请求 ">
+    <input type="button" onclick="getmySubmit()" value="get发送跨域请求 ">
+</div>
+<script>
+    function mySubmit() {
+        // 发送跨域请求
+        jQuery.ajax({
+            // url: "http://43.139.149.157:8080/api/login",
+            url: "http://localhost:8888/api/login",
+            type: "POST",
+            contentType : "application/json",
+            data: JSON.stringify({
+                "username":"admin",
+                "password":"XbMguwhJzMjjgDZ1GUWab5vCu3LmRzQy/Fw8nsKu90hK06+67+5tw8KzxzMMLaCsIKjU7mrmcxF8N+lMfEWyTsyhKCZHDHszaXxOZQTG2rQ6zTTXqZ4dLw+5TF4oM/xsHFYwK8/urceu5zur4gj4Ju9O0HY0mcZIcIWTa0Kev4o="
+            }),
+            dataType:"json",
+            success: function (result) {
+                alert("返回数据：" + result.data);
+            }
+        });
+    }
+
+    function getmySubmit() {
+        // 发送跨域请求
+        jQuery.ajax({
+            url: "http://localhost:8888/api/test/test1",
+            // url: "http://43.139.149.157:8080/api/test/test1",
+            type: "GET",
+            dataType: "json",
+            success: function (result) {
+                alert("返回数据：" + result.data.nickname);
+            }
+        });
+    }
+
+
+
+</script>
+</body>
+</html>
