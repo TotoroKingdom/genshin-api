@@ -29,7 +29,7 @@ class EmailTest {
     void build(){
         String receiver = "634581304@qq.com";
         String subject = "测试邮件";
-        String text = "baidu.com";
+        String text = "www.baidu.com";
         String url = EmailConstants.EMAIL_REGISTER_TEMPLATE;
         email.send(receiver,subject,text,url);
 

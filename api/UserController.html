@@ -6,7 +6,7 @@
     <meta name="generator" content="smart-doc">
     <title>原神API</title>
     <link rel="stylesheet" href="font.css">
-    <link rel="stylesheet" href="AllInOne.css?v=1676565729688"/>
+    <link rel="stylesheet" href="AllInOne.css?v=1678279631853"/>
     
     <style>.literalblock pre, .listingblock pre:not(.highlight), .listingblock pre[class="highlight"], .listingblock pre[class^="highlight "], .listingblock pre.CodeRay, .listingblock pre.prettyprint {
         background: #f7f7f8;
@@ -104,6 +104,10 @@
 
                     <li><a
                             href="PrayController.html#_5_2_十连">5.2.&nbsp;十连</a>
+                    </li>
+
+                    <li><a
+                            href="PrayController.html#_5_3_定轨">5.3.&nbsp;定轨</a>
                     </li>
                 </ul>
             </li>
@@ -215,7 +219,7 @@
             </h3>
                 <div class="paragraph"><p><strong>URL:</strong><a href="/user/update" class="bare">&nbsp;/user/update</a>
                 </p></div>
-                <div class="paragraph"><p><strong>Type:</strong>&nbsp;GET</p></div>
+                <div class="paragraph"><p><strong>Type:</strong>&nbsp;POST</p></div>
                 <div class="paragraph"><p><strong>Content-Type:</strong>&nbsp;application/json; charset=utf-8</p></div>
                 <div class="paragraph"><p><strong>Description:</strong>&nbsp;更新用户</p></div>
                 <div class="paragraph"><p><strong>Body-parameters:</strong></p></div>
@@ -345,20 +349,20 @@
                 <div class="paragraph"><p><strong>Request-example:</strong></p></div>
                 <div class="listingblock">
                     <div class="content">
-                        <pre><code class="bash">curl -X GET -H 'Content-Type: application/json; charset=utf-8' -i /user/update --data '{
-  "id": 979,
-  "nickname": "ada.schuster",
-  "username": "marline.brakus",
-  "password": "n2701j",
-  "email": "earl.reinger@gmail.com",
-  "status": "xbgpau",
-  "registerCode": "515",
-  "avatar": "k2lc2i",
-  "createTime": "2023-02-17 00:42:10",
-  "updateTime": "2023-02-17 00:42:10",
-  "createBy": 202,
-  "updateBy": 524,
-  "version": 533
+                        <pre><code class="bash">curl -X POST -H 'Content-Type: application/json; charset=utf-8' -i /user/update --data '{
+  "id": 930,
+  "nickname": "lionel.flatley",
+  "username": "ulysses.okuneva",
+  "password": "y8mw6p",
+  "email": "doyle.gutkowski@yahoo.com",
+  "status": "c5psex",
+  "registerCode": "40422",
+  "avatar": "g8s9yq",
+  "createTime": "2023-03-08 20:47:13",
+  "updateTime": "2023-03-08 20:47:13",
+  "createBy": 907,
+  "updateBy": 931,
+  "version": 515
 }'</code></pre>
                     </div>
                 </div>
@@ -405,9 +409,9 @@
                 <div class="listingblock">
                     <div class="content">
                         <pre><code class="json">{
-  "code": 422,
-  "msg": "00c1do",
-  "data": 573
+  "code": 765,
+  "msg": "icdikw",
+  "data": 132
 }</code></pre>
                     </div>
                 </div>
@@ -419,7 +423,7 @@
             </h3>
                 <div class="paragraph"><p><strong>URL:</strong><a href="/user/add" class="bare">&nbsp;/user/add</a>
                 </p></div>
-                <div class="paragraph"><p><strong>Type:</strong>&nbsp;GET</p></div>
+                <div class="paragraph"><p><strong>Type:</strong>&nbsp;POST</p></div>
                 <div class="paragraph"><p><strong>Content-Type:</strong>&nbsp;application/json; charset=utf-8</p></div>
                 <div class="paragraph"><p><strong>Description:</strong>&nbsp;新增用户</p></div>
                 <div class="paragraph"><p><strong>Body-parameters:</strong></p></div>
@@ -549,20 +553,20 @@
                 <div class="paragraph"><p><strong>Request-example:</strong></p></div>
                 <div class="listingblock">
                     <div class="content">
-                        <pre><code class="bash">curl -X GET -H 'Content-Type: application/json; charset=utf-8' -i /user/add --data '{
-  "id": 992,
-  "nickname": "ada.schuster",
-  "username": "marline.brakus",
-  "password": "mmk76f",
-  "email": "earl.reinger@gmail.com",
-  "status": "k3q508",
-  "registerCode": "515",
-  "avatar": "blc7gf",
-  "createTime": "2023-02-17 00:42:10",
-  "updateTime": "2023-02-17 00:42:10",
-  "createBy": 304,
-  "updateBy": 856,
-  "version": 70
+                        <pre><code class="bash">curl -X POST -H 'Content-Type: application/json; charset=utf-8' -i /user/add --data '{
+  "id": 543,
+  "nickname": "lionel.flatley",
+  "username": "ulysses.okuneva",
+  "password": "0by1ei",
+  "email": "doyle.gutkowski@yahoo.com",
+  "status": "4jkcfq",
+  "registerCode": "40422",
+  "avatar": "98stez",
+  "createTime": "2023-03-08 20:47:13",
+  "updateTime": "2023-03-08 20:47:13",
+  "createBy": 53,
+  "updateBy": 443,
+  "version": 164
 }'</code></pre>
                     </div>
                 </div>
@@ -609,9 +613,9 @@
                 <div class="listingblock">
                     <div class="content">
                         <pre><code class="json">{
-  "code": 156,
-  "msg": "z2s1sf",
-  "data": 218
+  "code": 58,
+  "msg": "cqbt2w",
+  "data": 19
 }</code></pre>
                     </div>
                 </div>
@@ -623,7 +627,7 @@
             </h3>
                 <div class="paragraph"><p><strong>URL:</strong><a href="/user/page" class="bare">&nbsp;/user/page</a>
                 </p></div>
-                <div class="paragraph"><p><strong>Type:</strong>&nbsp;GET</p></div>
+                <div class="paragraph"><p><strong>Type:</strong>&nbsp;POST</p></div>
                 <div class="paragraph"><p><strong>Content-Type:</strong>&nbsp;application/json; charset=utf-8</p></div>
                 <div class="paragraph"><p><strong>Description:</strong>&nbsp;分页查询</p></div>
                 <div class="paragraph"><p><strong>Body-parameters:</strong></p></div>
@@ -753,20 +757,20 @@
                 <div class="paragraph"><p><strong>Request-example:</strong></p></div>
                 <div class="listingblock">
                     <div class="content">
-                        <pre><code class="bash">curl -X GET -H 'Content-Type: application/json; charset=utf-8' -i /user/page --data '{
-  "id": 219,
-  "nickname": "ada.schuster",
-  "username": "marline.brakus",
-  "password": "3r6kae",
-  "email": "earl.reinger@gmail.com",
-  "status": "ud3ub2",
-  "registerCode": "515",
-  "avatar": "nxafti",
-  "createTime": "2023-02-17 00:42:10",
-  "updateTime": "2023-02-17 00:42:10",
-  "createBy": 260,
-  "updateBy": 80,
-  "version": 419
+                        <pre><code class="bash">curl -X POST -H 'Content-Type: application/json; charset=utf-8' -i /user/page --data '{
+  "id": 80,
+  "nickname": "lionel.flatley",
+  "username": "ulysses.okuneva",
+  "password": "2leb2i",
+  "email": "doyle.gutkowski@yahoo.com",
+  "status": "q4hbd5",
+  "registerCode": "40422",
+  "avatar": "txb479",
+  "createTime": "2023-03-08 20:47:13",
+  "updateTime": "2023-03-08 20:47:13",
+  "createBy": 659,
+  "updateBy": 631,
+  "version": 434
 }'</code></pre>
                     </div>
                 </div>
@@ -925,31 +929,31 @@
                 <div class="listingblock">
                     <div class="content">
                         <pre><code class="json">{
-  "code": 148,
-  "msg": "kc6qem",
+  "code": 643,
+  "msg": "7lzvxr",
   "data": {
-    "pages": 978,
+    "pages": 468,
     "records": [
       {
-        "id": 7,
-        "nickname": "ada.schuster",
-        "username": "marline.brakus",
-        "email": "earl.reinger@gmail.com",
-        "status": "x5p3oo",
-        "registerCode": "515",
-        "avatar": "rgyfoi",
+        "id": 797,
+        "nickname": "lionel.flatley",
+        "username": "ulysses.okuneva",
+        "email": "doyle.gutkowski@yahoo.com",
+        "status": "v01iap",
+        "registerCode": "40422",
+        "avatar": "ebjv3m",
         "roles": [
           {
-            "id": 222,
-            "roleName": "marline.brakus",
-            "roleKey": "2t6cc7"
+            "id": 537,
+            "roleName": "ulysses.okuneva",
+            "roleKey": "zzg2gr"
           }
         ]
       }
     ],
-    "total": 335,
-    "size": 424,
-    "current": 84
+    "total": 681,
+    "size": 509,
+    "current": 680
   }
 }</code></pre>
                     </div>
@@ -962,7 +966,7 @@
             </h3>
                 <div class="paragraph"><p><strong>URL:</strong><a href="/user/find" class="bare">&nbsp;/user/find</a>
                 </p></div>
-                <div class="paragraph"><p><strong>Type:</strong>&nbsp;GET</p></div>
+                <div class="paragraph"><p><strong>Type:</strong>&nbsp;POST</p></div>
                 <div class="paragraph"><p><strong>Content-Type:</strong>&nbsp;application/x-www-form-urlencoded;charset=utf-8</p></div>
                 <div class="paragraph"><p><strong>Description:</strong>&nbsp;根据ID查用户</p></div>
                 <div class="paragraph"><p><strong>Query-parameters:</strong></p></div>
@@ -996,7 +1000,7 @@
                 <div class="paragraph"><p><strong>Request-example:</strong></p></div>
                 <div class="listingblock">
                     <div class="content">
-                        <pre><code class="bash">curl -X GET -i /user/find?id=825</code></pre>
+                        <pre><code class="bash">curl -X POST -i /user/find --data 'id=301'</code></pre>
                     </div>
                 </div>
                 <div class="paragraph"><p><strong>Response-fields:</strong></p></div>
@@ -1119,21 +1123,21 @@
                 <div class="listingblock">
                     <div class="content">
                         <pre><code class="json">{
-  "code": 194,
-  "msg": "vqhz1c",
+  "code": 244,
+  "msg": "gur8k6",
   "data": {
-    "id": 613,
-    "nickname": "ada.schuster",
-    "username": "marline.brakus",
-    "email": "earl.reinger@gmail.com",
-    "status": "r2jev1",
-    "registerCode": "515",
-    "avatar": "gliwp8",
+    "id": 925,
+    "nickname": "lionel.flatley",
+    "username": "ulysses.okuneva",
+    "email": "doyle.gutkowski@yahoo.com",
+    "status": "0x47rm",
+    "registerCode": "40422",
+    "avatar": "1t48d4",
     "roles": [
       {
-        "id": 777,
-        "roleName": "marline.brakus",
-        "roleKey": "hs4caj"
+        "id": 986,
+        "roleName": "ulysses.okuneva",
+        "roleKey": "vupmhz"
       }
     ]
   }
@@ -1148,7 +1152,7 @@
             </h3>
                 <div class="paragraph"><p><strong>URL:</strong><a href="/user/delete" class="bare">&nbsp;/user/delete</a>
                 </p></div>
-                <div class="paragraph"><p><strong>Type:</strong>&nbsp;GET</p></div>
+                <div class="paragraph"><p><strong>Type:</strong>&nbsp;POST</p></div>
                 <div class="paragraph"><p><strong>Content-Type:</strong>&nbsp;application/x-www-form-urlencoded;charset=utf-8</p></div>
                 <div class="paragraph"><p><strong>Description:</strong>&nbsp;删除用户</p></div>
                 <div class="paragraph"><p><strong>Query-parameters:</strong></p></div>
@@ -1182,7 +1186,7 @@
                 <div class="paragraph"><p><strong>Request-example:</strong></p></div>
                 <div class="listingblock">
                     <div class="content">
-                        <pre><code class="bash">curl -X GET -i /user/delete?id=363</code></pre>
+                        <pre><code class="bash">curl -X POST -i /user/delete --data 'id=515'</code></pre>
                     </div>
                 </div>
                 <div class="paragraph"><p><strong>Response-fields:</strong></p></div>
@@ -1228,21 +1232,21 @@
                 <div class="listingblock">
                     <div class="content">
                         <pre><code class="json">{
-  "code": 125,
-  "msg": "1kbim4",
-  "data": 688
+  "code": 582,
+  "msg": "9avseo",
+  "data": 500
 }</code></pre>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <footer class="page-footer"><span class="copyright">Generated by smart-doc at 2023-02-17 00:42:09</span><span
+    <footer class="page-footer"><span class="copyright">Generated by smart-doc at 2023-03-08 20:47:11</span><span
             class="footer-modification">Suggestions,contact,support and error reporting on<a
             href="https://gitee.com/smart-doc-team/smart-doc" target="_blank">&nbsp;Gitee</a>&nbsp;or<a
             href="https://github.com/smart-doc-group/smart-doc.git" target="_blank">&nbsp;Github</a></span></footer>
 </div>
-<script src="search.js?v=1676565729688"></script>
+<script src="search.js?v=1678279631853"></script>
 <script>
     $(function () {
         const Accordion = function (el, multiple) {

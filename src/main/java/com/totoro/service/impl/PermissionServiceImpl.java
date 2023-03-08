@@ -44,12 +44,14 @@ public class PermissionServiceImpl extends ServiceImpl<PermissionMapper, Permiss
 
     @Override
     public Permission find(Long id) {
-        return null;
+        Permission permission = permissionMapper.selectById(id);
+        return permission;
     }
 
     @Override
     public int renew(Permission permission) {
-        return 0;
+        int i = permissionMapper.updateById(permission);
+        return i;
     }
 
     @Override
@@ -130,7 +132,8 @@ public class PermissionServiceImpl extends ServiceImpl<PermissionMapper, Permiss
 
     @Override
     public int delete(Long id) {
-        return 0;
+        int i = permissionMapper.deleteById(id);
+        return i;
     }
 
     @Override

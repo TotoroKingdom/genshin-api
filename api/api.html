@@ -6,7 +6,7 @@
     <meta name="generator" content="smart-doc">
     <title>原神API</title>
     <link rel="stylesheet" href="font.css">
-    <link rel="stylesheet" href="AllInOne.css?v=1676565729688"/>
+    <link rel="stylesheet" href="AllInOne.css?v=1678279631853"/>
     
     <style>.literalblock pre, .listingblock pre:not(.highlight), .listingblock pre[class="highlight"], .listingblock pre[class^="highlight "], .listingblock pre.CodeRay, .listingblock pre.prettyprint {
         background: #f7f7f8;
@@ -104,6 +104,10 @@
 
                     <li><a
                             href="PrayController.html#_5_2_十连">5.2.&nbsp;十连</a>
+                    </li>
+
+                    <li><a
+                            href="PrayController.html#_5_3_定轨">5.3.&nbsp;定轨</a>
                     </li>
                 </ul>
             </li>
@@ -346,19 +350,19 @@
                 <div class="listingblock">
                     <div class="content">
                         <pre><code class="bash">curl -X GET -H 'Content-Type: application/json; charset=utf-8' -i /test/union --data '{
-  "id": 684,
-  "nickname": "ada.schuster",
-  "username": "marline.brakus",
-  "password": "yhl3zq",
-  "email": "earl.reinger@gmail.com",
-  "status": "7zdr63",
-  "registerCode": "515",
-  "avatar": "jzby8l",
-  "createTime": "2023-02-17 00:42:10",
-  "updateTime": "2023-02-17 00:42:10",
-  "createBy": 682,
-  "updateBy": 961,
-  "version": 491
+  "id": 799,
+  "nickname": "lionel.flatley",
+  "username": "ulysses.okuneva",
+  "password": "x9pud9",
+  "email": "doyle.gutkowski@yahoo.com",
+  "status": "5jau0p",
+  "registerCode": "40422",
+  "avatar": "3dt0ra",
+  "createTime": "2023-03-08 20:47:12",
+  "updateTime": "2023-03-08 20:47:12",
+  "createBy": 585,
+  "updateBy": 756,
+  "version": 975
 }'</code></pre>
                     </div>
                 </div>
@@ -405,8 +409,8 @@
                 <div class="listingblock">
                     <div class="content">
                         <pre><code class="json">{
-  "code": 210,
-  "msg": "uliqqz",
+  "code": 769,
+  "msg": "pjbaol",
   "data": {
     "waring": "You may have used non-display generics."
   }
@@ -552,19 +556,19 @@
                 <div class="listingblock">
                     <div class="content">
                         <pre><code class="bash">curl -X GET -H 'Content-Type: application/json; charset=utf-8' -i /test/add --data '{
-  "id": 301,
-  "nickname": "ada.schuster",
-  "username": "marline.brakus",
-  "password": "ggpbgf",
-  "email": "earl.reinger@gmail.com",
-  "status": "8nunmy",
-  "registerCode": "515",
-  "avatar": "ca3msz",
-  "createTime": "2023-02-17 00:42:10",
-  "updateTime": "2023-02-17 00:42:10",
-  "createBy": 285,
-  "updateBy": 86,
-  "version": 964
+  "id": 260,
+  "nickname": "lionel.flatley",
+  "username": "ulysses.okuneva",
+  "password": "i28zir",
+  "email": "doyle.gutkowski@yahoo.com",
+  "status": "k9cduv",
+  "registerCode": "40422",
+  "avatar": "rcs39t",
+  "createTime": "2023-03-08 20:47:12",
+  "updateTime": "2023-03-08 20:47:12",
+  "createBy": 997,
+  "updateBy": 530,
+  "version": 393
 }'</code></pre>
                     </div>
                 </div>
@@ -611,8 +615,8 @@
                 <div class="listingblock">
                     <div class="content">
                         <pre><code class="json">{
-  "code": 921,
-  "msg": "rneexr",
+  "code": 4,
+  "msg": "xbfpx9",
   "data": {
     "waring": "You may have used non-display generics."
   }
@@ -636,10 +640,110 @@
                         <pre><code class="bash">curl -X GET -i /test/test1</code></pre>
                     </div>
                 </div>
+                <div class="paragraph"><p><strong>Response-fields:</strong></p></div>
+                <table class="tableblock frame-all grid-all spread">
+                    <colgroup>
+                        <col style="width: 25%;">
+                        <col style="width: 25%;">
+                        <col style="width: 25%;">
+                        <col style="width: 25%;">
+                    </colgroup>
+                    <thead>
+                    <tr>
+                        <th class="tableblock halign-left valign-top">Field</th>
+                        <th class="tableblock halign-left valign-top">Type</th>
+                        <th class="tableblock halign-left valign-top">Description</th>
+                        <th class="tableblock halign-left valign-top">Since</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">code</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">int32</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">No comments found.</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+                    </tr>
+
+                    <tr>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">msg</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">string</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">No comments found.</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+                    </tr>
+
+                    <tr>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">data</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">object</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">No comments found.</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+                    </tr>
+
+                    <tr>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">└─id</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">int64</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">No comments found.</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+                    </tr>
+
+                    <tr>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">└─nickname</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">string</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">昵称</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+                    </tr>
+
+                    <tr>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">└─username</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">string</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">用户名</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+                    </tr>
+
+                    <tr>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">└─email</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">string</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">邮箱</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+                    </tr>
+
+                    <tr>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">└─status</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">string</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">状态 00未激活 01激活 02停用</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+                    </tr>
+
+                    <tr>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">└─registerCode</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">string</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">注册码</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+                    </tr>
+
+                    <tr>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">└─avatar</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">string</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">图片</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+                    </tr>
+                    </tbody>
+                </table>
                 <div class="paragraph"><p><strong>Response-example:</strong></p></div>
                 <div class="listingblock">
                     <div class="content">
-                        <pre><code class="json">string</code></pre>
+                        <pre><code class="json">{
+  "code": 546,
+  "msg": "qstvl9",
+  "data": {
+    "id": 639,
+    "nickname": "lionel.flatley",
+    "username": "ulysses.okuneva",
+    "email": "doyle.gutkowski@yahoo.com",
+    "status": "45g2u0",
+    "registerCode": "40422",
+    "avatar": "dfzzlu"
+  }
+}</code></pre>
                     </div>
                 </div>
             </div>
@@ -668,12 +772,12 @@
             </div>
         </div>
     </div>
-    <footer class="page-footer"><span class="copyright">Generated by smart-doc at 2023-02-17 00:42:09</span><span
+    <footer class="page-footer"><span class="copyright">Generated by smart-doc at 2023-03-08 20:47:11</span><span
             class="footer-modification">Suggestions,contact,support and error reporting on<a
             href="https://gitee.com/smart-doc-team/smart-doc" target="_blank">&nbsp;Gitee</a>&nbsp;or<a
             href="https://github.com/smart-doc-group/smart-doc.git" target="_blank">&nbsp;Github</a></span></footer>
 </div>
-<script src="search.js?v=1676565729688"></script>
+<script src="search.js?v=1678279631853"></script>
 <script>
     $(function () {
         const Accordion = function (el, multiple) {

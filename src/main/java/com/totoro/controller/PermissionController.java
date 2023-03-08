@@ -30,8 +30,8 @@ public class PermissionController {
      */
     @PostMapping("add")
     public Result<Integer> add(@RequestBody @Valid Permission permission){
-
-        return null;
+        int add = permissionService.add(permission);
+        return Result.success(add);
     }
 
     /**
@@ -41,8 +41,8 @@ public class PermissionController {
      */
     @PostMapping("find")
     public Result<Permission> find(@RequestParam("id") Long id){
-
-        return null;
+        Permission permission = permissionService.find(id);
+        return Result.success(permission);
     }
 
     /**
@@ -52,8 +52,8 @@ public class PermissionController {
      */
     @PostMapping("update")
     public Result<Integer> renew(@RequestBody Permission permission){
-
-        return null;
+        int renew = permissionService.renew(permission);
+        return Result.success(renew);
     }
 
     /**
@@ -75,7 +75,7 @@ public class PermissionController {
      */
     @PostMapping("delete")
     public Result<Integer> delete(@RequestParam("id") Long id){
-
-        return null;
+        int delete = permissionService.delete(id);
+        return Result.success(delete);
     }
 }
