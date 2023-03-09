@@ -13,4 +13,6 @@ public class UserConstants {
     public static final String NOT_ACTIVATED = "00";
     public static final String ACTIVATED = "01";
     public static final String DISABLED = "02";
+
+    public static final String ADMIN = "1fe90a407473435da70b5426019c258b";
 }

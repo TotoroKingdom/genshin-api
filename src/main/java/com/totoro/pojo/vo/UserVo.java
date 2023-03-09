@@ -22,5 +22,8 @@ public class UserVo extends User {
      */
     private List<Role> roles;
 
-    private List<Permission> permissions;
+    /**
+     * 菜单路由
+     */
+    private List<Permission> menus;
 }

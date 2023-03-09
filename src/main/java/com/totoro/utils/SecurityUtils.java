@@ -1,5 +1,6 @@
 package com.totoro.utils;
 
+import com.totoro.constants.UserConstants;
 import com.totoro.pojo.User;
 import com.totoro.pojo.auth.LoginUser;
 import org.springframework.security.core.Authentication;
@@ -38,4 +39,13 @@ public class SecurityUtils {
     public static Long getUserId(){
         return getLoginUser().getUser().getId();
     }
+
+    public static boolean isAdmin(){
+        String registerCode = getUser().getRegisterCode();
+        if (registerCode.equals(UserConstants.ADMIN)){
+            return true;
+        }
+        return false;
+    }
+
 }

@@ -8,6 +8,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * @author:totoro
@@ -21,4 +22,9 @@ public class RoleServiceImpl extends ServiceImpl<RoleMapper, Role> implements Ro
     @Resource
     private RoleMapper roleMapper;
 
+    @Override
+    public List<Role> findByUserId(Long userId) {
+        List<Role> roles = roleMapper.findRoleByUserId(userId);
+        return roles;
+    }
 }

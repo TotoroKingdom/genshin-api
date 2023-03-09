@@ -32,6 +32,22 @@ public class PermissionServiceImpl extends ServiceImpl<PermissionMapper, Permiss
 
 
     @Override
+    public List<Permission> findByUserId(Long userID) {
+
+        boolean admin = SecurityUtils.isAdmin();
+        QueryWrapper<Object> wrapper = new QueryWrapper<>();
+        if (admin){
+            List<Permission> allMenu = permissionMapper.findAllMenu();
+            return this.setChild(allMenu);
+        }else {
+            wrapper.eq("u.id",userID);
+        }
+
+        List<Permission> menu = permissionMapper.findMenuByUserId(wrapper);
+        return this.setChild(menu);
+    }
+
+    @Override
     public int add(Permission permission) {
 
         permission.setCreateBy(SecurityUtils.getUserId());
@@ -113,22 +129,6 @@ public class PermissionServiceImpl extends ServiceImpl<PermissionMapper, Permiss
         return list;
     }
 
-    public List<Permission> setChild1(List<Permission> list){
-        if (CollUtil.isEmpty(list)){
-            return null;
-        }
-        for (Permission permission : list) {
-            List<Permission> temp = new ArrayList<>();
-            for (Permission p : list) {
-                if (p.getParentId().equals(permission.getId())){
-                    temp.add(p);
-                }
-            }
-            setChild(temp);
-            permission.setChild(temp);
-        }
-        return list;
-    }
 
     @Override
     public int delete(Long id) {

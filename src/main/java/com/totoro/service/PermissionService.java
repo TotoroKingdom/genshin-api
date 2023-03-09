@@ -3,6 +3,7 @@ package com.totoro.service;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.totoro.pojo.Permission;
 
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -11,6 +12,13 @@ import java.util.Set;
  * @description:
  **/
 public interface PermissionService {
+
+    /**
+     * 根据用户ID查询菜单
+     * @param userID
+     * @return
+     */
+    List<Permission> findByUserId(Long userID);
 
     /**
      * 新增菜单

@@ -1,9 +1,11 @@
 package com.totoro.service;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.totoro.pojo.Permission;
 import com.totoro.pojo.User;
 import com.totoro.pojo.vo.UserVo;
+
+import java.util.List;
 
 /**
  * @author:totoro
@@ -11,6 +13,12 @@ import com.totoro.pojo.vo.UserVo;
  * @description:
  */
 public interface UserService {
+
+    /**
+     * 获取当前登录用户信息
+     * @return
+     */
+    UserVo info();
 
 
     /**

@@ -8,9 +8,13 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.totoro.constants.UserConstants;
 import com.totoro.mapper.UserMapper;
+import com.totoro.pojo.Permission;
+import com.totoro.pojo.Role;
 import com.totoro.pojo.User;
 import com.totoro.pojo.dto.Params;
 import com.totoro.pojo.vo.UserVo;
+import com.totoro.service.PermissionService;
+import com.totoro.service.RoleService;
 import com.totoro.service.UserService;
 import com.totoro.utils.ParamsUtils;
 import com.totoro.utils.RsaUtils;
@@ -20,6 +24,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * @author:totoro
@@ -32,6 +37,24 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
 
     @Resource
     private UserMapper userMapper;
+
+    @Resource
+    private RoleService roleService;
+
+    @Resource
+    private PermissionService permissionService;
+
+    @Override
+    public UserVo info() {
+        UserVo vo = new UserVo();
+        User user = SecurityUtils.getUser();
+        List<Role> roles = roleService.findByUserId(user.getId());
+        List<Permission> menus = permissionService.findByUserId(user.getId());
+        vo.setRoles(roles);
+        vo.setMenus(menus);
+        return vo;
+    }
+
 
     @Override
     public int renew(User user) {
