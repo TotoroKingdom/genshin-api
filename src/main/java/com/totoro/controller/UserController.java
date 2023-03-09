@@ -31,7 +31,7 @@ public class UserController {
      * 获取个人用户信息、角色、权限
      * @return
      */
-    @PostMapping
+    @PostMapping("info")
     public Result<UserVo> info(){
 
         return Result.success(null);
@@ -41,7 +41,7 @@ public class UserController {
      * 获取路由信息
      * @return
      */
-    @PostMapping
+    @PostMapping("router")
     public Result<List<Permission>> router(){
 
         return Result.success(null);
