@@ -42,6 +42,7 @@ logging:
   level:
     com.hime: info
     org.springframework: error
+    com.totoro.mapper: debug
   config: classpath:logback-spring.xml
 logback:
   path: /opt/genshin-api/logs
