@@ -2,6 +2,7 @@ package com.totoro.controller;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.totoro.constants.Result;
+import com.totoro.pojo.Permission;
 import com.totoro.pojo.User;
 import com.totoro.pojo.vo.UserVo;
 import com.totoro.service.UserService;
@@ -11,6 +12,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * 用户管理API
@@ -24,6 +26,26 @@ public class UserController {
 
     @Resource
     private UserService userService;
+
+    /**
+     * 获取个人用户信息、角色、权限
+     * @return
+     */
+    @PostMapping("info")
+    public Result<UserVo> info(){
+
+        return Result.success(null);
+    }
+
+    /**
+     * 获取路由信息
+     * @return
+     */
+    @PostMapping("router")
+    public Result<List<Permission>> router(){
+
+        return Result.success(null);
+    }
 
     /**
      * 更新用户
