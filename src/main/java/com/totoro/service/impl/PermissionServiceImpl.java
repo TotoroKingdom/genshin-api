@@ -38,13 +38,22 @@ public class PermissionServiceImpl extends ServiceImpl<PermissionMapper, Permiss
         QueryWrapper<Object> wrapper = new QueryWrapper<>();
         if (admin){
             List<Permission> allMenu = permissionMapper.findAllMenu();
-            return this.setChild(allMenu);
+
+            return filter(this.setChild(allMenu));
         }else {
             wrapper.eq("u.id",userID);
         }
 
         List<Permission> menu = permissionMapper.findMenuByUserId(wrapper);
-        return this.setChild(menu);
+        return filter(this.setChild(menu));
+    }
+
+    public List<Permission> filter(List<Permission> permissions){
+        if (CollUtil.isEmpty(permissions)){
+            return null;
+        }
+        List<Permission> collect = permissions.stream().filter(p -> p.getParentId().equals(0l)).collect(Collectors.toList());
+        return collect;
     }
 
     @Override
