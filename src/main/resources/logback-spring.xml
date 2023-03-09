@@ -101,11 +101,12 @@
     <root level="info">
         <appender-ref ref="file_info" />
         <appender-ref ref="file_error" />
+        <appender-ref ref="sys-sql" />
     </root>
 
     <!--系统用户操作日志-->
-    <logger name="sys-sql" level="info">
-        <appender-ref ref="sys-sql"/>
-    </logger>
+<!--    <logger name="sys-sql" level="info">-->
+<!--        <appender-ref ref="sys-sql"/>-->
+<!--    </logger>-->
 
 </configuration>
