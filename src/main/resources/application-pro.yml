@@ -42,7 +42,7 @@ logging:
   level:
     com.hime: info
     org.springframework: error
-    com.totoro.mapper: debug
+    com.totoro.mapper: info
   config: classpath:logback-spring.xml
 logback:
   path: /opt/genshin-api/logs
@@ -56,7 +56,7 @@ mybatis-plus:
   type-aliases-package: com.totoro.pojo
   configuration:
     map-underscore-to-camel-case: true
-    log-impl: org.apache.ibatis.logging.slf4j.Slf4jImpl
+#    log-impl: org.apache.ibatis.logging.slf4j.Slf4jImpl
 # 接口文档
 springdoc:
   packages-to-scan: com.totoro.controller
