@@ -115,6 +115,7 @@ public class PermissionServiceImpl extends ServiceImpl<PermissionMapper, Permiss
 
     public List<Permission> selectAll(){
         LambdaQueryWrapper<Permission> wrapper = new LambdaQueryWrapper<>();
+        wrapper.orderByAsc(Permission::getOrderNum);
         List<Permission> list = permissionMapper.selectList(wrapper);
         return list;
     }
