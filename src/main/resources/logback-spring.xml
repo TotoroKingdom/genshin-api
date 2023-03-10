@@ -60,19 +60,20 @@
         </filter>
     </appender>
 
-    <!-- 系统日志访问日志输出  -->
-    <!--    <appender name="sys-log" class="ch.qos.logback.core.rolling.RollingFileAppender">-->
-    <!--        <file>${log.path}/log.log</file>-->
-    <!--        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">-->
-    <!--            &lt;!&ndash; 按天回滚 daily &ndash;&gt;-->
-    <!--            <fileNamePattern>${log.path}/%d{yyyy-MM-dd}.log.log</fileNamePattern>-->
-    <!--            &lt;!&ndash; 日志最大的历史 60天 &ndash;&gt;-->
-    <!--            <maxHistory>60</maxHistory>-->
-    <!--        </rollingPolicy>-->
-    <!--        <encoder>-->
-    <!--            <pattern>${log.pattern}</pattern>-->
-    <!--        </encoder>-->
-    <!--    </appender>-->
+    <appender name="sys-log" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${log.path}/log.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- 按天回滚 daily -->
+            <fileNamePattern>${log.path}/%d{yyyy-MM-dd}.log.log</fileNamePattern>
+            <!-- 日志最大的历史 60天 -->
+            <maxHistory>60</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>${log.pattern}</pattern>
+        </encoder>
+    </appender>
+
+
     <!-- 系统SQL访问日志输出  -->
     <appender name="sys-sql" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <file>${log.path}/sql.log</file>
@@ -105,8 +106,8 @@
     </root>
 
     <!--系统用户操作日志-->
-<!--    <logger name="sys-sql" level="info">-->
-<!--        <appender-ref ref="sys-sql"/>-->
-<!--    </logger>-->
+    <logger name="sys-sql" level="info">
+        <appender-ref ref="sys-sql"/>
+    </logger>
 
 </configuration>
