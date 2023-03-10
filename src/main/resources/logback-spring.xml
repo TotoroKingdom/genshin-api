@@ -107,8 +107,8 @@
     </root>
 
     <!--系统用户操作日志-->
-    <logger name="sys-sql" level="info">
-        <appender-ref ref="sys-sql"/>
-    </logger>
+<!--    <logger name="sys-sql" level="info">-->
+<!--        <appender-ref ref="sys-sql"/>-->
+<!--    </logger>-->
 
 </configuration>
