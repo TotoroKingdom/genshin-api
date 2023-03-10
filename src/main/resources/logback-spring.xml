@@ -28,9 +28,9 @@
         <encoder>
             <pattern>${log.pattern}</pattern>
         </encoder>
-        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
             <!-- 过滤的级别 -->
-            <level>INFO</level>
+            <level>DEBUG</level>
             <!-- 匹配时的操作：接收（记录） -->
             <onMatch>ACCEPT</onMatch>
             <!-- 不匹配时的操作：拒绝（不记录） -->
@@ -50,19 +50,15 @@
         <encoder>
             <pattern>${log.pattern}</pattern>
         </encoder>
-<!--        <filter class="ch.qos.logback.classic.filter.LevelFilter">-->
-<!--            &lt;!&ndash; 过滤的级别 &ndash;&gt;-->
-<!--            <level>ERROR</level>-->
-<!--            &lt;!&ndash; 匹配时的操作：接收（记录） &ndash;&gt;-->
-<!--            <onMatch>ACCEPT</onMatch>-->
-<!--            &lt;!&ndash; 不匹配时的操作：拒绝（不记录） &ndash;&gt;-->
-<!--            <onMismatch>DENY</onMismatch>-->
-<!--        </filter>-->
-        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
-            <level>DEBUG</level>
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <!-- 过滤的级别 -->
+            <level>ERROR</level>
+            <!-- 匹配时的操作：接收（记录） -->
             <onMatch>ACCEPT</onMatch>
+            <!-- 不匹配时的操作：拒绝（不记录） -->
             <onMismatch>DENY</onMismatch>
         </filter>
+
     </appender>
 
     <appender name="sys-log" class="ch.qos.logback.core.rolling.RollingFileAppender">
