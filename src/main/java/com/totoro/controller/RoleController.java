@@ -31,8 +31,8 @@ public class RoleController {
      */
     @PostMapping("add")
     public Result<Integer> add(@RequestBody @Valid Role role){
-
-        return null;
+        Integer add = roleService.add(role);
+        return Result.success(add);
     }
 
     /**
@@ -41,9 +41,9 @@ public class RoleController {
      * @return
      */
     @PostMapping("find")
-    public Result<Role> add(@RequestParam("id") Long id){
+    public Result<Role> find(@RequestParam("id") Long id){
 
-        return null;
+        return Result.success(roleService.findById(id));
     }
 
     /**
@@ -54,7 +54,7 @@ public class RoleController {
     @PostMapping("update")
     public Result<Integer> renew(@RequestBody Role role){
 
-        return null;
+        return Result.success(roleService.renew(role));
     }
 
     /**
@@ -65,7 +65,7 @@ public class RoleController {
     @PostMapping("page")
     public Result<Page<Role>> page(@RequestBody Role role){
 
-        return null;
+        return Result.success(roleService.page(role));
     }
 
 
@@ -77,6 +77,6 @@ public class RoleController {
     @PostMapping("delete")
     public Result<Integer> delete(@RequestParam("id") Long id){
 
-        return null;
+        return Result.success(roleService.remove(id));
     }
 }
