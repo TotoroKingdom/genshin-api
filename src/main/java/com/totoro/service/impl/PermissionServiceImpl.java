@@ -15,7 +15,9 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import java.util.*;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 /**
@@ -83,38 +85,18 @@ public class PermissionServiceImpl extends ServiceImpl<PermissionMapper, Permiss
     public Page<Permission> page(Permission permission) {
         //分页工具，获取前端传来的分页参数
         Page page = ParamsUtils.getPage();
-        long current = page.getCurrent();
-        long size = page.getSize();
-        //索引起点
-        long start = ((current - 1) * size);
-        //索引截至点
-        long end = start + size;
+        LambdaQueryWrapper<Permission> wrapper = new LambdaQueryWrapper<>();
+        wrapper.orderByAsc(Permission::getOrderNum);
+        wrapper.orderByAsc(Permission::getId);
+        Page<Permission> pList = permissionMapper.selectPage(page, wrapper);
 
-        //查询所有
-        List<Permission> list = selectAll();
-
-        //设置子节点
-        List<Permission> permissions = setChild(list);
-
-        //只要父级点
-        List<Permission> collect = permissions.stream().filter(p -> p.getParentId().equals(0l)).collect(Collectors.toList());
-        //手动分页
-        List<Permission> records = new ArrayList<>();
-        if (end >= collect.size()){
-            end = collect.size();
-        }
-        for (long i = start; i < end; i++) {
-            records.add(collect.get((int) i));
-        }
-
-        page.setRecords(records);
-        page.setTotal(collect.size());
-
-        return page;
+        return pList;
     }
 
     public List<Permission> selectAll(){
         LambdaQueryWrapper<Permission> wrapper = new LambdaQueryWrapper<>();
+        wrapper.orderByAsc(Permission::getOrderNum);
+
         List<Permission> list = permissionMapper.selectList(wrapper);
         return list;
     }

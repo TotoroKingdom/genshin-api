@@ -48,6 +48,6 @@ public interface PermissionMapper extends BaseMapper<Permission> {
      * 查询所有菜单
      * @return
      */
-    @Select("select * from t_permission")
+    @Select("select * from t_permission order by order_num")
     List<Permission> findAllMenu();
 }
