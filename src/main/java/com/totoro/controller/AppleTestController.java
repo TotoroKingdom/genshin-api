@@ -16,7 +16,9 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ExecutorService;
@@ -43,19 +45,12 @@ public class AppleTestController {
     @RequestMapping("clear")
     public Result clear(@RequestParam("id") Long id, HttpServletRequest request){
 
-        if (map.containsKey(id)){
-            return Result.success(id+"limit NOT OK");
-        }
-
-        if (ObjectUtil.isNotNull(id)){
-            System.out.println(id);
-            long timeMillis = System.currentTimeMillis();
-            map.put(id, timeMillis);
-        }
-        return Result.success(id+"limit OK");
+        Cookie[] cookies = request.getCookies();
+        System.out.println(cookies);
+        return Result.success(cookies);
     }
 
-    @Scheduled(cron = "* 0/1 * * * ?")
+    @Scheduled(cron = "0 0/1 * * * ?")
     public void clearMap(){
         System.out.println("开始释放");
         long current = System.currentTimeMillis();
